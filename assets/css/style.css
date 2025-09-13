@@ -1,14 +1,14 @@
 body {
   background: black;
   color: white;
-  font-family: sans-serif;
+font-family: 'Lucida Console', Monaco, monospace;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
 h1 {
-  color: #bb86fc;
+  color: #b200ff; /* brighter neon purple */
   font-size: 4rem;
   margin-top: 20vh;
   opacity: 0;
@@ -26,18 +26,18 @@ nav a {
 }
 
 nav a:hover {
-  text-shadow: 0 0 5px #bb86fc;
+  text-shadow: 0 0 5px #b200ff;
 }
 
 @keyframes fadeInNeon {
   0% { opacity: 0; text-shadow: none; }
-  50% { opacity: 0.5; text-shadow: 0 0 5px #bb86fc; }
-  100% { opacity: 1; text-shadow: 0 0 5px #bb86fc,
-                               0 0 10px #bb86fc,
-                               0 0 20px #bb86fc; }
+  50% { opacity: 0.5; text-shadow: 0 0 5px #b200ff; }
+  100% { opacity: 1; text-shadow: 0 0 5px #b200ff,
+                               0 0 10px #b200ff,
+                               0 0 20px #b200ff; }
 }
 
 @keyframes neonPulse {
-  0% { text-shadow: 0 0 5px #bb86fc, 0 0 10px #bb86fc, 0 0 20px #bb86fc; }
-  100% { text-shadow: 0 0 10px #bb86fc, 0 0 20px #bb86fc, 0 0 40px #bb86fc; }
+  0% { text-shadow: 0 0 5px #b200ff, 0 0 10px #b200ff, 0 0 20px #b200ff; }
+  100% { text-shadow: 0 0 10px #b200ff, 0 0 20px #b200ff, 0 0 40px #b200ff; }
 }
