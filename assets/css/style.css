@@ -9,13 +9,10 @@ body {
 
 h1 {
   color: #bb86fc;
-  text-shadow: 0 0 5px #bb86fc,
-               0 0 10px #bb86fc,
-               0 0 20px #bb86fc;
   font-size: 4rem;
   margin-top: 20vh;
   opacity: 0;
-  animation: fadeInNeon 2s ease-in forwards;
+  animation: fadeInNeon 2s ease-in forwards, neonPulse 3s infinite alternate;
 }
 
 p {
@@ -38,4 +35,9 @@ nav a:hover {
   100% { opacity: 1; text-shadow: 0 0 5px #bb86fc,
                                0 0 10px #bb86fc,
                                0 0 20px #bb86fc; }
+}
+
+@keyframes neonPulse {
+  0% { text-shadow: 0 0 5px #bb86fc, 0 0 10px #bb86fc, 0 0 20px #bb86fc; }
+  100% { text-shadow: 0 0 10px #bb86fc, 0 0 20px #bb86fc, 0 0 40px #bb86fc; }
 }
