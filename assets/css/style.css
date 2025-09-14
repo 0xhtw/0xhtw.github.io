@@ -41,3 +41,24 @@ nav a:hover {
   0% { text-shadow: 0 0 5px #b200ff, 0 0 10px #b200ff, 0 0 20px #b200ff; }
   100% { text-shadow: 0 0 10px #b200ff, 0 0 20px #b200ff, 0 0 40px #b200ff; }
 }
+
+.about {
+  margin-top: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.about h2 {
+  color: #b200ff; /* neon purple */
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeInNeon 2s ease-in forwards, neonPulse 3s infinite alternate;
+}
+
