@@ -62,3 +62,22 @@ nav a:hover {
   animation: fadeInNeon 2s ease-in forwards, neonPulse 3s infinite alternate;
 }
 
+.what-is-htw {
+  margin-top: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.what-is-htw h2 {
+  color: #b200ff;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeInNeon 2s ease-in forwards, neonPulse 3s infinite alternate;
+}
