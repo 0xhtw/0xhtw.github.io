@@ -148,6 +148,8 @@ Looping through the banned IPs:
 
 
 Printing alerts for new bans:
+
+
 ```echo -e "\n\033[1;31m[!] FAIL2BAN ALERT\033[0m"```
 
 
