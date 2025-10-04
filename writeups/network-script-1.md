@@ -31,7 +31,7 @@ Yeah, blatant honeypot. Get a load of all these keywords, these aren't actually 
 
 
 <p align="center">
-  <img src="/writeups/images/clinteastwood.gif" alt="insertClintEastwoodhere" width="400">
+  <img src="images/clinteastwood.gif" alt="insertClintEastwoodhere" width="400">
 </p>
 
 
