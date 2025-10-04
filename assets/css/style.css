@@ -81,3 +81,62 @@ nav a:hover {
   opacity: 0;
   animation: fadeInNeon 2s ease-in forwards, neonPulse 3s infinite alternate;
 }
+
+/* ========== Writeup Page Styling ========== */
+
+/* Wrap all markdown content */
+.writeup-content {
+  max-width: 800px;       /* keep text in a readable column */
+  margin: 50px auto;      /* center block, not text */
+  padding: 0 20px;        /* breathing room on sides */
+  text-align: left;       /* no more centered paragraphs */
+  line-height: 1.7;       /* better readability */
+  font-size: 1rem;
+  color: #ddd;
+}
+
+/* Headings inside writeups */
+.writeup-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-align: center; /* keep main title centered */
+}
+
+.writeup-content h2 {
+  font-size: 1.6rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #b200ff; /* neon purple for consistency */
+  text-align: left;
+}
+
+/* Paragraphs */
+.writeup-content p {
+  margin-bottom: 15px;
+}
+
+/* Code blocks */
+.writeup-content pre {
+  background: #111;       /* dark background */
+  color: #0f0;            /* green terminal style */
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 0.95rem;
+  overflow-x: auto;       /* scroll if too wide */
+  text-align: left;
+}
+
+/* Inline code */
+.writeup-content code {
+  background: #222;
+  color: #0f0;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* Remove duplicate giant title */
+header h1, .post-title {
+  display: none; /* hides Jekyll/Theme-injected title if duplicated */
+}
