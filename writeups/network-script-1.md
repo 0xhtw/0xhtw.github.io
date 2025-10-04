@@ -149,9 +149,21 @@ Looping through the banned IPs:
 
 Printing alerts for new bans:
 ```echo -e "\n\033[1;31m[!] FAIL2BAN ALERT\033[0m"```
+
+
+
 ```echo -e "Banned IP : \033[1;33m$ip\033[0m"```
+
+
+
 ```echo -e "Time      : \033[1;36m$(date)\033[0m"```
+
+
+
 ```echo "────────────────────────────────────────────"```
+
+
+
 This prints a red coloured alert in the terminal when a brand new IP is banned, no slaps on the wrist for first time offenders around here... booked and jailed before you can send your next packet buddy. 
 
 Anyways, here is what gets printed out.
