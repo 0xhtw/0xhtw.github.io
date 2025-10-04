@@ -18,6 +18,18 @@ Okay, lets start off with purposes for these scripts that work together and crea
 My reason for creating these was because I was looking at honeypot servers on ```shodan.io``` hosted on AWS, these servers had many services and web pages open and I decided to create these auxiliary scripts to investigate what these honeypots do if you decide to interact with them.
 
 
+![image](images/honeypot1.png)
+
+
+This is a Linode hosted honeypot found on shodan. You can see it has the ```honeypot``` tag in the top left. You can also tell it's a honeypot by the number of open ports. Lets look at all the services it's running.
+
+
+![images](images/honeypot2.png)
+
+
+Yeah, blatant honeypot. Get a load of all these keywords. These are used to learn attack methods mostly, but some can be offensive and attack back, it's a little bit like poking a nest full of pests, careful, it might bite back. I personally have visited a honeypot hosting a web service, being based in China in this instance, and as soon as I hit the page malware started downloading. Thankfully, i'm like Clint Eastwood with a mouse and keyboard and cancelled the download and took down my network interfaces quicker than a tramp on chips. Anyways, I digress. Back to the scripts.
+
+
 ```Fail2Ban``` will detect anything within logs from services on your computer. For example, ```ssh```, ```RDP```, ```SMB,```, ```FTP``` and sometimes any aggressive port scanning back at your client IP, (TCP SYN/ACK scans, etc). Depending on the results a honeypot gets from a scan, and if the honeypot has been setup by some mad nutter, they can use those results to determine what OS and services your client is running and send crafted packets/requests targeting vulnerabilities, this especially can trigger constant errors in application logs, which will result in Fail2Ban detecting this and toss them into the sin bin (Fail2Ban jail) like its Paper Toss from back in the day... please bring that game back.
 
 
