@@ -3,7 +3,12 @@
 ### Welcome to the first writeup I have created. We'll start off with some basic scripting. In my writeups, you'll always find a "Track of the session", this will be a track that played during my writeup, that I feel was the best in the queue or best suited the session. If you like music, I guess that's a plus. 
 
 
-### Track of the session: [Unorthodox (Radio Edit) - Wretch 32, Example](https://www.youtube.com/watch?v=LysZJBo2HI4) - This one is a great one, positive and creative vibe to dive right into the first writeup. Real ones know this track from Fifa Street 2012 back in the day. Now lets jump into it...
+
+### Track of the session: [Unorthodox (Radio Edit) - Wretch 32, Example](https://www.youtube.com/watch?v=LysZJBo2HI4) 
+
+
+
+### This one is a great one, positive and creative vibe to dive right into the first writeup. Real ones know this track from Fifa Street 2012 back in the day. Now lets jump into it...
 
 
 
