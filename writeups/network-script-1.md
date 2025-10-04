@@ -149,7 +149,7 @@ This creates an infinite loop, each cycle runs ```fail2ban-client status <jail>`
 ```awk -F': ' '{print $2}'``` extracts the list of IPs and then finally stores them in ```current_bans```
 
 
-Very simple explanation of the first half, lets head into the second half.sleep 5  # Poll interval
+Very simple explanation of the first half, lets head into the second half.
 
 
 ![image](images/bansnip2.png)
