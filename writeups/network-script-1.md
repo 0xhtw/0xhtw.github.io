@@ -156,7 +156,9 @@ Very simple explanation of the first half, lets head into the second half.
 
 
 Handling our empty ban list:
-```if [[ -z "$current_bans" ]]; then sleep 5 continue fi``` - If no IPs are banned as of now, this just waits 5 seconds then continues on with the loop
+```if [[ -z "$current_bans" ]]; then sleep 5 continue fi``` - If no IPs are banned as of now, this just waits 5 seconds then continues on with the loop.
+
+
 Please note that the code looks messy all together, this is how markdown files will contain it, you can see in the image that I have actually written it properly.
 
 
