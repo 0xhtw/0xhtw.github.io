@@ -185,7 +185,7 @@ Printing alerts for new bans:
 
 
 
-This prints a red coloured alert in the terminal when a brand new IP is banned, no slaps on the wrist for first time offenders around here... booked and jailed before you can send your next packet buddy. 
+This prints a red coloured alert in the terminal when a brand new IP is banned, no slaps on the wrist for first time offenders around here... booked and jailed at his majesty's pleasure before you can send your next packet buddy. 
 
 Anyways, here is what gets printed out.
 
