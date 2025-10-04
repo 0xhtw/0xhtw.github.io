@@ -6,6 +6,7 @@
 ### Track of the session: [Unorthodox (Radio Edit) - Wretch 32, Example](https://www.youtube.com/watch?v=LysZJBo2HI4) - This one is a great one, positive and creative vibe to dive right into the first writeup. Real ones know this track from Fifa Street 2012 back in the day. Now lets jump into it...
 
 
+
 Okay, lets start off with purposes for these scripts that work together and create a situation, I'll use the reason I made them. Two scripts, one monitors outbound connections, and the other monitors a service called Fail2Ban for banned IPs. Fail2Ban is a log-based intrusion prevention tool, you will obviously need to have this installed before running this script. 
 
 
