@@ -4,7 +4,7 @@
 
 
 
-### Track of the session: [Unorthodox (Radio Edit) - Wretch 32, Example](https://www.youtube.com/watch?v=LysZJBo2HI4) 
+### Track of the session: [Unorthodox - Wretch 32, Example](https://www.youtube.com/watch?v=LysZJBo2HI4) 
 
 
 
