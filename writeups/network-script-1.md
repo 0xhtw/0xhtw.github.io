@@ -1,5 +1,3 @@
-# Scripting: A beginners guide to Network Monitoring
-
 ### Welcome to the first writeup I have created. We'll start off with some basic scripting. In my writeups, you'll always find a "Track of the session", this will be a track that played during my writeup, that I feel was the best in the queue or best suited the session. If you like music, I guess that's a plus. 
 
 ### Track of the session: [Unorthodox (Radio Edit) - Wretch 32, Example](https://www.youtube.com/watch?v=LysZJBo2HI4) - This one is a great one, positive and creative vibe to dive right into the first writeup. Real ones know this track from Fifa Street 2012 back in the day. Now lets jump into it...
@@ -8,7 +6,7 @@ Okay, lets start off with purposes for these scripts that work together and crea
 
 My reason for creating these was because I was looking at honeypot servers on ```shodan.io``` hosted on AWS, these servers had many services and web pages open and I decided to create these auxiliary scripts to investigate what these honeypots do if you decide to interact with them.
 
-```Fail2Ban``` will detect anything within logs from services on your computer. For example, ```ssh```, ```RDP```, ```SMB,```, ```FTP``` and sometimes any aggressive port scanning back at your client IP, (TCP SYN/ACK scans, etc). Depending on the results a honeypot gets from a scan, and if the honeypot has been setup by some mad nutter, they can use those results to determine what OS and services your client is running and send crafted packets/requests targeting vulnerabilities, this especially can trigger constant errors in application logs, which will result in Fail2Ban detecting this and toss them into the sin bin (Fail2Ban jail) like its Paper Toss from back in the day... please bring that game back.
+`Fail2Ban` will detect anything within logs from services on your computer. For example, ```ssh```, ```RDP```, ```SMB,```, ```FTP``` and sometimes any aggressive port scanning back at your client IP, (TCP SYN/ACK scans, etc). Depending on the results a honeypot gets from a scan, and if the honeypot has been setup by some mad nutter, they can use those results to determine what OS and services your client is running and send crafted packets/requests targeting vulnerabilities, this especially can trigger constant errors in application logs, which will result in Fail2Ban detecting this and toss them into the sin bin (Fail2Ban jail) like its Paper Toss from back in the day... please bring that game back.
 
 As for the outbound monitor script, it's extremely basic and written in bash (as my home machine runs Linux). It utilizes different commands to grab information on what connections are going outbound, what application/service is doing it and what port number. Lets get into the demonstration!
 
