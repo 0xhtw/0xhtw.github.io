@@ -225,7 +225,7 @@ nav a:hover {
 /* Inline code */
 .writeup-content code {
   background: #222;
-  color: #0f0;
+  color: #ff0000;
   padding: 2px 5px;
   border-radius: 4px;
   font-size: 0.95rem;
