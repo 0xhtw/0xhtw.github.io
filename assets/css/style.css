@@ -213,7 +213,7 @@ nav a:hover {
 /* Code blocks */
 .writeup-content pre {
   background: #111;
-  color: #0f0;
+  color: #ff0000;
   padding: 10px 15px;
   border-radius: 6px;
   font-family: "Lucida Console", Monaco, monospace;
