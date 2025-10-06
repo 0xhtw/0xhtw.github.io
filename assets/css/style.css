@@ -1,5 +1,7 @@
+/*           GLOBAL BASE           */
+
 body {
-  background: black;
+  background: radial-gradient(circle at center, #050000 0%, #000000 100%);
   color: white;
   font-family: 'Lucida Console', Monaco, monospace;
   text-align: center;
@@ -16,7 +18,7 @@ h1 {
   background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite;
+  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite ease-in-out, bloodFlow 8s infinite ease-in-out;
 }
 
 p {
@@ -52,36 +54,46 @@ nav a:hover {
   }
 }
 
-/* dripping/flickering neon */
+/* smoother, liquid-like neon flicker */
 @keyframes bloodFlicker {
-  0%, 100% { 
-    opacity: 1; 
-    text-shadow: 0 0 10px #ff0033, 0 0 20px #ff1a4b, 0 0 30px #e60026; 
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 10px #e60026, 0 0 20px #ff0033, 0 0 40px #ff1a4b;
+    filter: blur(0px);
+    transform: translateY(0);
   }
-  85% { opacity: 0.95; }
-  88% { opacity: 0.7; filter: blur(0.5px); }
-  90% { opacity: 0.3; text-shadow: none; transform: translateY(1px); }
-  92% { opacity: 0.85; text-shadow: 0 0 8px #ff1a4b; transform: translateY(0); }
-  95% { opacity: 0.5; filter: blur(1px); }
-  97% { opacity: 1; filter: none; }
+  20% {
+    opacity: 0.98;
+    text-shadow: 0 0 12px #ff0033, 0 0 24px #ff1a4b, 0 0 45px #e60026;
+  }
+  40% {
+    opacity: 0.92;
+    text-shadow: 0 0 8px #e60026, 0 0 18px #ff1a4b, 0 0 35px #ff0033;
+  }
+  60% {
+    opacity: 0.96;
+    text-shadow: 0 0 10px #e60026, 0 0 22px #ff0033, 0 0 40px #ff1a4b;
+  }
+  80% {
+    opacity: 1;
+    filter: blur(0.3px);
+    transform: translateY(0.3px);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 12px #ff1a4b, 0 0 24px #ff0033, 0 0 48px #e60026;
+    filter: none;
+    transform: translateY(0);
+  }
 }
 
-/* smooth neon breathing */
-@keyframes neonPulse {
-  0% { 
-    text-shadow: 0 0 6px #e60026, 
-                 0 0 12px #ff0033, 
-                 0 0 24px #ff1a4b; 
+/* subtle inner pulse like blood moving through glass tubes */
+@keyframes bloodFlow {
+  0%, 100% {
+    text-shadow: 0 0 8px #e60026, 0 0 20px #ff0033, 0 0 40px #ff1a4b;
   }
-  50% { 
-    text-shadow: 0 0 16px #ff1a4b, 
-                 0 0 32px #ff0033, 
-                 0 0 60px #e60026; 
-  }
-  100% { 
-    text-shadow: 0 0 8px #e60026, 
-                 0 0 20px #ff0033, 
-                 0 0 40px #ff1a4b; 
+  50% {
+    text-shadow: 0 0 12px #ff1a4b, 0 0 30px #ff0033, 0 0 55px #e60026;
   }
 }
 
@@ -106,7 +118,7 @@ nav a:hover {
   background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite;
+  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite ease-in-out, bloodFlow 8s infinite ease-in-out;
 }
 
 /*          WHAT IS HTW            */
@@ -130,7 +142,7 @@ nav a:hover {
   background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite;
+  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite ease-in-out, bloodFlow 8s infinite ease-in-out;
 }
 
 /*        WRITEUP PAGE STYLING     */
@@ -153,7 +165,7 @@ nav a:hover {
   background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 6s infinite;
+  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 6s infinite ease-in-out, bloodFlow 9s infinite ease-in-out;
 }
 
 .writeup-content h2 {
@@ -165,7 +177,7 @@ nav a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: left;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 6s infinite;
+  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 6s infinite ease-in-out, bloodFlow 9s infinite ease-in-out;
 }
 
 /* Paragraphs */
