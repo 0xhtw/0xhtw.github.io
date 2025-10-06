@@ -1,4 +1,6 @@
+/* =============================== */
 /*           GLOBAL BASE           */
+/* =============================== */
 
 body {
   background: radial-gradient(circle at center, #050000 0%, #000000 100%);
@@ -9,17 +11,64 @@ body {
   padding: 0;
 }
 
+/* =============================== */
 /*            HEADINGS             */
+/* =============================== */
 
-h1 {
+h1, .about h2, .what-is-htw h2, .writeup-content h1, .writeup-content h2 {
   font-size: 4rem;
   margin-top: 20vh;
   opacity: 0;
-  background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
+  background: linear-gradient(
+      to bottom,
+      #4d0000 0%,      /* dark blood base */
+      #e60026 40%,     /* neon blood core */
+      #ff0033 60%,     /* neon highlight */
+      #660000 100%     /* dark edges */
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite ease-in-out, bloodFlow 8s infinite ease-in-out;
+  animation: fadeInNeon 2s ease-in forwards,
+             bloodFlicker 5s infinite ease-in-out,
+             bloodFlow 8s infinite ease-in-out;
+  position: relative;
+  /* reflection under headings */
+h1::before,
+.about h2::before,
+.what-is-htw h2::before,
+.writeup-content h1::before,
+.writeup-content h2::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;       /* slightly below the text */
+  left: 50%;
+  transform: translateX(-50%) scaleY(-1); /* flip vertically for reflection */
+  width: 80%;          /* adjust width of reflection */
+  height: 20px;        /* thickness of reflection */
+  background: linear-gradient(to top, rgba(255,0,0,0.25), transparent);
+  filter: blur(4px);   /* soft glow */
+  opacity: 0.6;
+  pointer-events: none; 
+  border-radius: 50%;
 }
+
+}
+
+/* subtle streak overlay for wet/bloody texture */
+h1::after, .about h2::after, .what-is-htw h2::after, .writeup-content h1::after, .writeup-content h2::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(255,0,0,0.05) 0%, rgba(0,0,0,0.05) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+}
+
+/* =============================== */
+/*             TEXT                 */
+/* =============================== */
 
 p {
   color: white;
@@ -35,7 +84,9 @@ nav a:hover {
   text-shadow: 0 0 6px #ff0033, 0 0 12px #ff1a4b;
 }
 
-/*        NEON ANIMATIONS          */
+/* =============================== */
+/*        NEON / BLOOD FX          */
+/* =============================== */
 
 @keyframes fadeInNeon {
   0% { 
@@ -44,50 +95,38 @@ nav a:hover {
   }
   50% { 
     opacity: 0.5; 
-    text-shadow: 0 0 6px #ff1a4b; 
+    text-shadow: 0 0 6px #ff0033; 
   }
   100% { 
     opacity: 1; 
-    text-shadow: 0 0 8px #e60026,
-                 0 0 16px #ff0033,
-                 0 0 32px #ff1a4b; 
+    text-shadow: 0 0 10px #e60026, 0 0 20px #ff0033, 0 0 40px #ff1a4b; 
   }
 }
 
-/* smoother, liquid-like neon flicker */
+/* liquid flicker — stays glowing, soft dimming and glow shifts */
 @keyframes bloodFlicker {
-  0% {
+  0%, 100% {
     opacity: 1;
-    text-shadow: 0 0 10px #e60026, 0 0 20px #ff0033, 0 0 40px #ff1a4b;
-    filter: blur(0px);
+    text-shadow: 0 0 10px #e60026, 1px 1px 12px #ff0033, -1px -1px 20px #b2001a;
+    filter: blur(0);
     transform: translateY(0);
   }
   20% {
-    opacity: 0.98;
-    text-shadow: 0 0 12px #ff0033, 0 0 24px #ff1a4b, 0 0 45px #e60026;
+    opacity: 0.97;
+    text-shadow: 0 0 12px #ff0033, 0 0 24px #ff1a4b, 0 0 40px #e60026;
   }
-  40% {
-    opacity: 0.92;
-    text-shadow: 0 0 8px #e60026, 0 0 18px #ff1a4b, 0 0 35px #ff0033;
-  }
-  60% {
-    opacity: 0.96;
-    text-shadow: 0 0 10px #e60026, 0 0 22px #ff0033, 0 0 40px #ff1a4b;
+  50% {
+    opacity: 0.94;
+    text-shadow: 0 0 8px #e60026, 0 0 18px #ff0033, 0 0 35px #b2001a;
   }
   80% {
-    opacity: 1;
+    opacity: 0.98;
     filter: blur(0.3px);
     transform: translateY(0.3px);
   }
-  100% {
-    opacity: 1;
-    text-shadow: 0 0 12px #ff1a4b, 0 0 24px #ff0033, 0 0 48px #e60026;
-    filter: none;
-    transform: translateY(0);
-  }
 }
 
-/* subtle inner pulse like blood moving through glass tubes */
+/* subtle inner blood flow / glow pulse */
 @keyframes bloodFlow {
   0%, 100% {
     text-shadow: 0 0 8px #e60026, 0 0 20px #ff0033, 0 0 40px #ff1a4b;
@@ -97,7 +136,9 @@ nav a:hover {
   }
 }
 
+/* =============================== */
 /*             ABOUT               */
+/* =============================== */
 
 .about {
   margin-top: 50px;
@@ -114,14 +155,11 @@ nav a:hover {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 15px;
-  opacity: 0;
-  background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite ease-in-out, bloodFlow 8s infinite ease-in-out;
 }
 
+/* =============================== */
 /*          WHAT IS HTW            */
+/* =============================== */
 
 .what-is-htw {
   margin-top: 50px;
@@ -138,14 +176,11 @@ nav a:hover {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 15px;
-  opacity: 0;
-  background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 5s infinite ease-in-out, bloodFlow 8s infinite ease-in-out;
 }
 
+/* =============================== */
 /*        WRITEUP PAGE STYLING     */
+/* =============================== */
 
 .writeup-content {
   max-width: 800px;
@@ -161,23 +196,13 @@ nav a:hover {
   font-size: 2.2rem;
   margin-bottom: 20px;
   text-align: center;
-  opacity: 0;
-  background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 6s infinite ease-in-out, bloodFlow 9s infinite ease-in-out;
 }
 
 .writeup-content h2 {
   font-size: 1.6rem;
   margin-top: 30px;
   margin-bottom: 15px;
-  opacity: 0;
-  background: linear-gradient(to bottom, #ff1a4b 0%, #e60026 60%, #660000 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   text-align: left;
-  animation: fadeInNeon 2s ease-in forwards, bloodFlicker 6s infinite ease-in-out, bloodFlow 9s infinite ease-in-out;
 }
 
 /* Paragraphs */
