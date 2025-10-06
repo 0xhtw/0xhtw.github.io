@@ -17,7 +17,8 @@ body {
 
 h1, .about h2, .what-is-htw h2, .writeup-content h1, .writeup-content h2 {
   font-size: 4rem;
-  margin-top: 20vh;
+  margin-top: 8vh;       /* reduced from 20vh */
+  margin-bottom: 4vh;    /* added to balance spacing */
   opacity: 0;
   background: linear-gradient(
       to bottom,
