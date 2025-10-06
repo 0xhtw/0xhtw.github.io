@@ -32,7 +32,9 @@ h1, .about h2, .what-is-htw h2, .writeup-content h1, .writeup-content h2 {
              bloodFlicker 5s infinite ease-in-out,
              bloodFlow 8s infinite ease-in-out;
   position: relative;
-  /* reflection under headings */
+}
+
+/* reflection under headings */
 h1::before,
 .about h2::before,
 .what-is-htw h2::before,
@@ -52,10 +54,12 @@ h1::before,
   border-radius: 50%;
 }
 
-}
-
 /* subtle streak overlay for wet/bloody texture */
-h1::after, .about h2::after, .what-is-htw h2::after, .writeup-content h1::after, .writeup-content h2::after {
+h1::after,
+.about h2::after,
+.what-is-htw h2::after,
+.writeup-content h1::after,
+.writeup-content h2::after {
   content: '';
   position: absolute;
   left: 0; top: 0;
@@ -67,7 +71,7 @@ h1::after, .about h2::after, .what-is-htw h2::after, .writeup-content h1::after,
 }
 
 /* =============================== */
-/*             TEXT                 */
+/*             TEXT                */
 /* =============================== */
 
 p {
@@ -231,7 +235,27 @@ nav a:hover {
   font-size: 0.95rem;
 }
 
-/* Hide duplicate giant title */
+/* =============================== */
+/*       MARKDOWN LINK STYLING     */
+/* =============================== */
+
+.writeup-content a {
+  color: #ff1a4b; /* neon blood red */
+  text-decoration: none;
+  text-shadow: 0 0 5px #e60026, 0 0 10px #ff0033;
+  transition: all 0.2s ease;
+}
+
+.writeup-content a:hover {
+  color: #ff0033;
+  text-shadow: 0 0 8px #ff0033, 0 0 16px #ff1a4b;
+  text-decoration: underline;
+}
+
+/* =============================== */
+/*             CLEANUP             */
+/* =============================== */
+
 header h1, .post-title {
   display: none;
 }
