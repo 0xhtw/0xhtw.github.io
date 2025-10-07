@@ -233,7 +233,7 @@ The ```GET``` to ```page/PrinterList``` mimics opening the printer list UI. This
 
 
 
-# Selecting the target printer
+### Selecting the target printer
 
 
 ```
@@ -249,7 +249,7 @@ data = {'service': 'direct/1/PrinterList/selectPrinter','sp': 'l1001'}
 
 
 
-# Opening the printer options tab
+### Opening the printer options tab
 
 
 ```
@@ -262,7 +262,7 @@ data = {'service': 'direct/1/PrinterList/selectPrinter','sp': 'l1001'}
 
 
 
-# ```POST ``` to enable scripting and supply script body
+### ```POST ``` to enable scripting and supply script body
 
 
 ```
