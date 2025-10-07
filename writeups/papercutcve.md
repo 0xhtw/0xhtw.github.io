@@ -94,7 +94,7 @@ Finally, we get the print output telling us whether it's vulnerable or not and i
 Of course with this, you'll be executing code as ```NT AUTHORITY\\SYSTEM```, allowing you free reign of the machine it's being hosted on, most commonly Windows servers acting as domain controllers. (Yes, some people host things like printing servers on domain controllers, instead of seperating it onto a dedicated print server)... queue the Chris Kamara gif...
 
 
-![ifYouSeeThisChrisKamaraHasHadADayOff](https://tenor.com/view/chris-kamara-unbelievable-unbelievable-jeff-jeff-stelling-sky-sports-gif-7825596994225138305)
+![ifYouSeeThisChrisKamaraHasHadADayOff](https://media1.tenor.com/m/bJobASQnaoEAAAAd/chris-kamara-unbelievable.gif)
 
 
 If you're one of these people that like having everything centralized for convenience etc, you may be thinking, "Well, what's the point of having the service running on it's own server? Is that not a waste of resource?"
