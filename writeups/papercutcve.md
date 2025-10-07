@@ -317,3 +317,7 @@ This checks for an application-level success message as you can seee in ```if r.
 
 
 I would elaborate on how this can be detected, but this is a 2 nearly 3 year old CVE. You have no business running this version of papercut still, and if you are, you'll end up like our man Joe Bloggs on the phone to the ICO. 
+
+
+
+That's it for the Papercut RCE writeup, hopefully it's been a good read and relatively educational in terms of risk prevention. Stay tuned for similar writeups!
