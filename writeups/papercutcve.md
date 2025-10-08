@@ -12,7 +12,7 @@
 
 
 
-### This track brings heavy bass, and raw sound effects like dub sirens, critical for hard hitting garage tracks. Heard this one live at Venue MOT in South East London, a venue based in a backstreet garage. The best yet worst environment, would 100% reccommend. Anyways, this is a cybersecurity portfolio, not a UKG critique blog. Lets jump into the writeup, selecta!   
+### This track brings heavy bass, and raw sound effects like dub sirens, critical for hard hitting garage tracks. Heard this one live at Venue MOT in South East London, a venue based in a backstreet garage. The best yet worst environment, would 100% recommend. Anyways, this is a cybersecurity portfolio, not a UKG critique blog. Lets jump into the writeup, selecta!   
 
 
 
@@ -72,7 +72,7 @@ Starting off at the beginning, we can see it imports ```argparse```, which is to
 - It then sends a POST request with from data posing as a legitimate Papercut setup form submission.
 
 
-- If it gets a respone containing ```papercut``` and a tasty ```JSESSIONID``` flavoured cookie, that means the target is responding as a valid Papercut instance. 
+- If it gets a response containing ```papercut``` and a tasty ```JSESSIONID``` flavoured cookie, that means the target is responding as a valid Papercut instance. 
 
 
 What does the ```JSESSIONID``` do? 
@@ -91,7 +91,7 @@ Finally, we get the print output telling us whether it's vulnerable or not and i
 - This starts off by using the authenticated session (```JSESSIONID``` mentioned previously), to send form data that updates internal Papercut config values. We can see on Line 30 that it targets specific backend service endpoints like ```/ConfigEditor``` that manages system settings. This opens up things like executing code by abusing Papercut's built in scripting feature.
 
 
-Of course with this, you'll be executing code as ```NT AUTHORITY\\SYSTEM```, allowing you free reign of the machine it's being hosted on, most commonly Windows servers acting as domain controllers. (Yes, some people host things like printing servers on domain controllers, instead of seperating it onto a dedicated print server)... queue the Chris Kamara gif...
+Of course with this, you'll be executing code as ```NT AUTHORITY\\SYSTEM```, allowing you free reign of the machine it's being hosted on, most commonly Windows servers acting as domain controllers. (Yes, some people host things like printing servers on domain controllers, instead of separating it onto a dedicated print server)... queue the Chris Kamara gif...
 
 
 ![ifYouSeeThisChrisKamaraHasHadADayOff](https://media1.tenor.com/m/bJobASQnaoEAAAAd/chris-kamara-unbelievable.gif)
@@ -190,7 +190,7 @@ Oh no, all the desktop icons are gone, and the file extensions are random gibber
 Our man Joe Bloggs has committed the unforgivable act of friendly fire, and shot everyone with a GPO refresh which contained a brand new domain-wide object containing ransomware in the from of ```.exe```, which was unknowingly created via Papercut's RCE whilst he was deciding what meal deal to get from Tesco... On the phone to the ICO you go old son!
 
 
-And this, has been a story on why seperation and segmentation is vital. Lets move back onto the second half of the CVE PoC.
+And this, has been a story on why separation and segmentation is vital. Lets move back onto the second half of the CVE PoC.
 
 
 
@@ -219,7 +219,7 @@ This holds a Java call that would invoke the runtime to execute the OS command, 
 - ```headers = {'Origin': f'{base_url}'}```
 
 
-This emulates values a browser would send when navigating Papercuts admin UI. 
+This emulates values a browser would send when navigating Papercut's admin UI. 
 
 
 
@@ -245,7 +245,7 @@ data = {'service': 'direct/1/PrinterList/selectPrinter','sp': 'l1001'}
 - The purpose of this is to emulate selecting a specific printer within the UI. This action leads the application to show the printer-specific configuration page. 
 
 
-- In the application, this selects the object to be configured; in the attack it selects the obkecct the attacker would want to modify. 
+- In the application, this selects the object to be configured; in the attack it selects the object the attacker would want to modify. 
 
 
 
@@ -283,7 +283,7 @@ data = {'service': 'direct/1/PrinterList/selectPrinter','sp': 'l1001'}
 This is the very important step, this submits the printer configuration form. 
 
 
-The fields mirror tthe web UI form: 
+The fields mirror the web UI form: 
 
 
 - ```printerId```: which printer to modify.
@@ -313,7 +313,7 @@ When an attacker submits this ```POST``` and the server accepts it without corre
 And then at last, we have the success check. 
 
 
-This checks for an application-level success message as you can seee in ```if r.status_code == 200 and 'Saved successfully' in r.text:```. 
+This checks for an application-level success message as you can see in ```if r.status_code == 200 and 'Saved successfully' in r.text:```. 
 
 
 I would elaborate on how this can be detected, but this is a 2 nearly 3 year old CVE. You have no business running this version of papercut still, and if you are, you'll end up like our man Joe Bloggs on the phone to the ICO. 
