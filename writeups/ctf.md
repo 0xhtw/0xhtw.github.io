@@ -193,7 +193,7 @@ This must've tripped some auxiliary script the host had set up as the CTF screen
 So we did it! Don't sweat the technique!
 
 
-A whole bunch of high fives and fistbumps with the squad later the host came up to us and offered the winning prize for this CTF which was a brand new Arduino starer kit.
+A whole bunch of high fives and fistbumps with the squad later the host came up to us and offered the winning prize for this CTF which was a brand new Arduino starter kit.
 
 
 I may have done the work to complete it but I had to thank our new friend swrv for letting me use his laptop to participate, so I let him have the prize as a thank you. Hope you're enjoying it brother.
