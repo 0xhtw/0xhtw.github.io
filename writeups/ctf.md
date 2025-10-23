@@ -13,7 +13,7 @@
 ### Track of the session: [Kryptic Minds - Badman VIP/Six Degrees](https://www.youtube.com/watch?v=qJvcgUaBIFo)
 
 
-### Two tracks??? Yeah, whoever was on the decks at this event has some serious ball knowledge when it comes to dubstep and dropped the legendary mix/fade between those two tracks Simon Shreeve from Kryptic Minds dropped on the [Kryptic Minds 40 Min Boiler Room 2012 DJ Set](https://www.youtube.com/watch?v=qJvcgUaBIFo) I've linked the set in the title too. You can find the beginning of Badman VIP at the 17:45 timestamp and the Six Degrees fade at the 19:30 timestamp. Good to see people still dropping these tracks today.
+### Two tracks??? Yeah, whoever was on the decks at this event has some serious ball knowledge when it comes to dubstep and dropped the legendary mix/fade between those two tracks Simon Shreeve from Kryptic Minds dropped on the [Kryptic Minds 40 Min Boiler Room 2012 DJ Set](https://www.youtube.com/watch?v=qJvcgUaBIFo). I've linked the set in the title too. You can find the beginning of Badman VIP at the 17:45 timestamp and the Six Degrees fade at the 19:30 timestamp. Good to see people still dropping these tracks today.
 
 
 ### Kryptic Minds are absolute pioneers when it comes to the UK dubstep scene, none of that skrillex stuff, this is that gritty UK sound, which really fit the event perfectly. Lets get into it.
