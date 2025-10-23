@@ -184,10 +184,10 @@ It did indeed exist, and it appears to be the flag! Lets make sure after our con
 ![image](images/refuse.png)
 
 
-Yep, connection refused. It did indeed shut off and send itself to /dev/null from what we can see.
-
-
 ![gif](https://64.media.tumblr.com/9ffb63477f9ce615614fe50364418ca9/f3416c2782181375-a3/s400x600/558d79f6c1d4c929a8e9be6ff72435bda3974ff4.gifv)
+
+
+Yep, connection refused. It did indeed shut off and send itself to /dev/null from what we can see.
 
 
 This must've tripped some auxiliary script the host had set up as the CTF screen in the room marked the challenge as complete. This was some cool stuff, props to whoever set this all up as they made a shell script which monitored different CTFs individually and when they went offline they seemed to be marked as complete on the output. For an underground event, that's some cool stuff.
