@@ -43,19 +43,19 @@ By this point, music is absolutely blaring to the point I feel my ribs vibrating
 I used the given creds to log into the server, which was an account that had read permissions only. The only file we could find was an image named ```pallas1.jpeg```. Lets take a look at it.
 
 
-![image](pallascat.png)
+![image](images/pallascat.png)
 
 
 Alright, this is funny but lets not spend too much time laughing at this creature. This silly meme has a ```base64``` string below it, so this is where we start in terms of finding the next step. Lets translate this.
 
 
-![image](b64decode.png)
+![image](images/b64decode.png)
 
 
 Here I write this extremely short .sh script to decode it, please forgive the lack of detailed commenting, gotta be quick in them CTFs! It should be enough for you to understand what it does. Lets use the script and see what we get when we type the base64 into the script.
 
 
-![image](pallasb64.png)
+![image](images/pallasb64.png)
 
 
 Wow, okay so the silly pallas cat mocks us for thinking it would be that easy. Challenge accepted. Lets break down how data can be hidden within images.
@@ -88,25 +88,25 @@ I am sure I've missed a few, but there are so many ways to hide data within an i
 Since the original photo had base64 on it, I decided to not go straight to the deep end and create a script to check whether there was any file concatenation and any added bytes had been appended in base64.
 
 
-![image](imageb64decode.png)
+![image](images/imageb64decode.png)
 
 
 This basically just searches the file for base64 and extracts it then decodes it on output. Lets run it.
 
 
-![image](outputdecode.png)
+![image](images/outputdecode.png)
 
 
 I was absolutely shocked when I saw this flawlessly worked. No way there was actually base64 appended into the image. I cut it off, but there was a password aswell. So we can now SSH into this server, lets see if we can find the flag on it, something tells me it isn't gonna be that easy.
 
 
-![image](ssh.png)
+![image](images/ssh.png)
 
 
 It actually was real and we got valid credentials, we are now on the server, so lets take a look around and see what we can find.
 
 
-![image](discovery.png)
+![image](images/discovery.png)
 
 
 So we started with ```pwd``` to see the present working directory, and then used ```ls -la``` to see all directories. I switched over to desktop and found a folder called ```1337hax``` which is just comedic nerd/hacker terms for "elite hacks".
@@ -118,10 +118,10 @@ In this folder we can find a ```.pcap``` with a funny but questionable name, let
 I decide to push this file over to swrv's machine to analyze it with the tools we have. ```netcat``` was installed on the server, so i utilized that to transfer the file over.
 
 
-![image](packet1.png)
+![image](images/packet1.png)
 
 
-![image](packet2.png)
+![image](images/packet2.png)
 
 
 So here we can see that there is a singular TCP packet. I note the following down to see where we can potentially try to move.
@@ -139,22 +139,22 @@ So here we can see that there is a singular TCP packet. I note the following dow
 I then created another script to dive into the 180 bytes of TCP data shown at the bottom of the packet as it appears to be in HEX. The script will read and then translate that. Lets have a look at it.
 
 
-![image](hexscript1.png)
+![image](images/hexscript1.png)
 
 
-![image](hexscript2.png)
+![image](images/hexscript2.png)
 
 
 This reads the ```.pcap```, uses the ```scapy``` library to process and reassemble the payloads from multiple network packets if fragmented and then attempts to decode the payload in different formats. This is incase we encounter anymore network capture files that contain different types of data or more than 1 packet. It decodes ASCII hex and raw text. Lets run it against our capture file.
 
 
-![image](hexoutput.png)
+![image](images/hexoutput.png)
 
 
 Nice, this was a hidden message. We get a welcome from the pallas cat and given a directory, which doesn't exist on the server we got credentials for and isn't a hidden directory either. Lets scan and do some recon on that source IP we got in the capture file!
 
 
-![image](recon.png)
+![image](images/recon.png)
 
 
 LOL, good one. I see the relevance with the .pcap file name. However, starting to scratch my head a little bit as this is all I have to work with... I put the ```-sV``` argument on the ```nmap``` command, but it didn't provide any banners or services being used. I highly doubt that there's an application called "bigbrother" running on port 1984, that's obviously a joke.
@@ -166,7 +166,7 @@ I decided to do ```curl -I http://10.4.20.6:1984/``` to see if anything returned
 I then decided to do ```nc -v 10.4.20.6 1984``` to see if anything would return.
 
 
-![image](shell.png)
+![image](images/shell.png)
 
 
 Oh????? There's an active listener on port 1984 and we have an interactive shell, I guess that's what was meant in the ```.pcap``` when it said "IM WATCHING YOU"? Big brother is always listening I guess, makes sense. Our group is going crazy at this point, yet I can't hear them over the music playing in the back, which happened to be [Dual Core - All the Things](https://www.youtube.com/watch?v=X0WNQ3UYbJE)... classic nerdcore hacker music. We believe we're getting closer to the end already.
@@ -175,13 +175,13 @@ Oh????? There's an active listener on port 1984 and we have an interactive shell
 I refer back to the file path that was hidden in the capture file to see if it exists on this server we now have access to.
 
 
-![image](flag.png)
+![image](images/flag.png)
 
 
 It did indeed exist, and it appears to be the flag! Lets make sure after our connection exited.
 
 
-![image](refuse.png)
+![image](images/refuse.png)
 
 
 Yep, connection refused. It did indeed shut off and send itself to /dev/null from what we can see.
