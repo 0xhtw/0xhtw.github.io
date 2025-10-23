@@ -1,4 +1,4 @@
-# CTF/Reverse Engineering: Unlicensed hacker parties in the depths of London - Who needs a calm environment when partaking in CTFS?
+# CTF/Reverse Engineering: Unlicensed hacker parties in the depths of London - Who needs a calm environment when partaking in CTFs?
 
 
 ### In this writeup I'll be documenting one of my recent experiences with a CTF (Capture The Flag) event. This event wasn't a professional one, this was an event ran by black hats, cybersecurity enthusiasts and other people within similar categories.
