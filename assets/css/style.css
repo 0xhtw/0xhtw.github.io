@@ -17,15 +17,15 @@ body {
 
 h1, .about h2, .what-is-htw h2, .writeup-content h1, .writeup-content h2 {
   font-size: 4rem;
-  margin-top: 8vh;       /* reduced from 20vh */
-  margin-bottom: 4vh;    /* added to balance spacing */
+  margin-top: 8vh;
+  margin-bottom: 4vh;
   opacity: 0;
   background: linear-gradient(
       to bottom,
-      #4d0000 0%,      /* dark blood base */
-      #e60026 40%,     /* neon blood core */
-      #ff0033 60%,     /* neon highlight */
-      #660000 100%     /* dark edges */
+      #4d0000 0%,
+      #e60026 40%,
+      #ff0033 60%,
+      #660000 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -43,19 +43,19 @@ h1::before,
 .writeup-content h2::before {
   content: '';
   position: absolute;
-  bottom: -10px;       /* slightly below the text */
+  bottom: -10px;
   left: 50%;
-  transform: translateX(-50%) scaleY(-1); /* flip vertically for reflection */
-  width: 80%;          /* adjust width of reflection */
-  height: 20px;        /* thickness of reflection */
+  transform: translateX(-50%) scaleY(-1);
+  width: 80%;
+  height: 20px;
   background: linear-gradient(to top, rgba(255,0,0,0.25), transparent);
-  filter: blur(4px);   /* soft glow */
+  filter: blur(4px);
   opacity: 0.6;
-  pointer-events: none; 
+  pointer-events: none;
   border-radius: 50%;
 }
 
-/* subtle streak overlay for wet/bloody texture */
+/* subtle streak overlay */
 h1::after,
 .about h2::after,
 .what-is-htw h2::after,
@@ -108,7 +108,7 @@ nav a:hover {
   }
 }
 
-/* liquid flicker — stays glowing, soft dimming and glow shifts */
+/* liquid flicker */
 @keyframes bloodFlicker {
   0%, 100% {
     opacity: 1;
@@ -131,7 +131,7 @@ nav a:hover {
   }
 }
 
-/* subtle inner blood flow / glow pulse */
+/* inner blood flow pulse */
 @keyframes bloodFlow {
   0%, 100% {
     text-shadow: 0 0 8px #e60026, 0 0 20px #ff0033, 0 0 40px #ff1a4b;
@@ -191,7 +191,7 @@ nav a:hover {
   max-width: 800px;
   margin: 50px auto;
   padding: 0 20px;
-  text-align: left;
+  text-align: left; /* make writeups left-aligned */
   line-height: 1.7;
   font-size: 1rem;
   color: #ddd;
@@ -200,22 +200,29 @@ nav a:hover {
 .writeup-content h1 {
   font-size: 2.2rem;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: center; /* keep headings centered */
 }
 
 .writeup-content h2 {
   font-size: 1.6rem;
   margin-top: 30px;
   margin-bottom: 15px;
-  text-align: left;
+  text-align: center; /* optional: centered subheadings */
 }
 
-/* Paragraphs */
 .writeup-content p {
   margin-bottom: 15px;
 }
 
-/* Code blocks */
+/* images & GIFs centered neatly within text column */
+.writeup-content img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* code blocks */
 .writeup-content pre {
   background: #111;
   color: #ff0000;
@@ -227,7 +234,7 @@ nav a:hover {
   text-align: left;
 }
 
-/* Inline code */
+/* inline code */
 .writeup-content code {
   background: #222;
   color: #ff0000;
@@ -241,7 +248,7 @@ nav a:hover {
 /* =============================== */
 
 .writeup-content a {
-  color: #ff1a4b; /* neon blood red */
+  color: #ff1a4b;
   text-decoration: none;
   text-shadow: 0 0 5px #e60026, 0 0 10px #ff0033;
   transition: all 0.2s ease;
