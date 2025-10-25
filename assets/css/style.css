@@ -4,6 +4,8 @@
 
 body {
   background: radial-gradient(circle at center, #050505 0%, #000000 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
   color: #e0e0e0;
   font-family: 'Lucida Console', Monaco, monospace;
   text-align: center;
@@ -11,6 +13,7 @@ body {
   padding: 0 1rem; /* responsive padding */
   overflow-x: hidden;
   font-size: 1rem;
+  min-height: 100vh; /* fill viewport to avoid elongation */
 }
 
 /* Scanline overlay for CRT effect */
@@ -117,7 +120,7 @@ nav a:hover {
 
 .about {
   margin-top: 2rem;
-  max-width: 95%;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -138,7 +141,7 @@ nav a:hover {
 
 .what-is-htw {
   margin-top: 2rem;
-  max-width: 95%;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -158,7 +161,7 @@ nav a:hover {
 /* =============================== */
 
 .writeup-content {
-  max-width: 95%;
+  max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
   text-align: center;
@@ -289,4 +292,17 @@ html {
   * {
     scrollbar-color: #00ff66 #000;
   }
+}
+
+/* =============================== */
+/*      IMAGE RESPONSIVENESS       */
+/* =============================== */
+
+.writeup-content img {
+  display: block;
+  margin: 1rem auto;  /* center horizontally */
+  max-width: 100%;    /* scale down to fit container */
+  height: auto;       /* maintain aspect ratio */
+  border-radius: 6px;
+  box-shadow: 0 0 8px #00ff66 inset;
 }
