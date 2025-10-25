@@ -191,7 +191,7 @@ nav a:hover {
   max-width: 800px;
   margin: 50px auto;
   padding: 0 20px;
-  text-align: left; /* make writeups left-aligned */
+  text-align: center; /* please just centre */ 
   line-height: 1.7;
   font-size: 1rem;
   color: #ddd;
