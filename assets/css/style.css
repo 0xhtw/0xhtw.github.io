@@ -8,8 +8,9 @@ body {
   font-family: 'Lucida Console', Monaco, monospace;
   text-align: center;
   margin: 0;
-  padding: 0;
+  padding: 0 1rem; /* responsive padding */
   overflow-x: hidden;
+  font-size: 1rem;
 }
 
 /* Scanline overlay for CRT effect */
@@ -34,9 +35,9 @@ body::before {
 /* =============================== */
 
 h1, .about h2, .what-is-htw h2, .writeup-content h1, .writeup-content h2 {
-  font-size: 4rem;
-  margin-top: 8vh;
-  margin-bottom: 4vh;
+  font-size: clamp(1.5rem, 5vw, 4rem); /* responsive font size */
+  margin-top: 5vh;
+  margin-bottom: 3vh;
   background: linear-gradient(to bottom, #00ff66 0%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -46,7 +47,7 @@ h1, .about h2, .what-is-htw h2, .writeup-content h1, .writeup-content h2 {
   transition: transform 0.1s ease;
 }
 
-/* Reflection (kept subtle, terminal-glow style) */
+/* Reflection (subtle) */
 h1::before,
 .about h2::before,
 .what-is-htw h2::before,
@@ -98,10 +99,11 @@ p {
 
 nav a {
   color: #00ff66;
-  margin: 0 15px;
+  margin: 0.5rem 0.75rem;
   text-decoration: none;
   text-shadow: 0 0 4px #00ff66;
   transition: all 0.2s ease;
+  display: inline-block;
 }
 
 nav a:hover {
@@ -114,8 +116,8 @@ nav a:hover {
 /* =============================== */
 
 .about {
-  margin-top: 50px;
-  max-width: 600px;
+  margin-top: 2rem;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -125,7 +127,7 @@ nav a:hover {
 }
 
 .about h2 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   text-align: center;
   margin-bottom: 15px;
 }
@@ -135,8 +137,8 @@ nav a:hover {
 /* =============================== */
 
 .what-is-htw {
-  margin-top: 50px;
-  max-width: 600px;
+  margin-top: 2rem;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -146,7 +148,7 @@ nav a:hover {
 }
 
 .what-is-htw h2 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   text-align: center;
   margin-bottom: 15px;
 }
@@ -156,9 +158,9 @@ nav a:hover {
 /* =============================== */
 
 .writeup-content {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 0 20px;
+  max-width: 95%;
+  margin: 2rem auto;
+  padding: 0 1rem;
   text-align: center;
   line-height: 1.7;
   font-size: 1rem;
@@ -166,13 +168,13 @@ nav a:hover {
 }
 
 .writeup-content h1 {
-  font-size: 2.2rem;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
   margin-bottom: 20px;
   text-align: center;
 }
 
 .writeup-content h2 {
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   margin-top: 30px;
   margin-bottom: 15px;
   text-align: center;
@@ -190,7 +192,7 @@ nav a:hover {
   padding: 10px 15px;
   border-radius: 6px;
   font-family: "Lucida Console", Monaco, monospace;
-  font-size: 0.95rem;
+  font-size: clamp(0.75rem, 2vw, 0.95rem);
   overflow-x: auto;
   text-align: center;
   border: 1px solid #00ff66;
@@ -203,7 +205,7 @@ nav a:hover {
   color: #00ff66;
   padding: 2px 5px;
   border-radius: 4px;
-  font-size: 0.95rem;
+  font-size: clamp(0.75rem, 2vw, 0.95rem);
 }
 
 /* =============================== */
@@ -235,15 +237,56 @@ header h1, .post-title {
 /*          SCROLLBAR STYLE        */
 /* =============================== */
 
+/* WebKit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px; /* horizontal scrollbar */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #00ff66;
+  background: #00ff66;
   border-radius: 10px;
+  box-shadow: inset 0 0 6px #00ff66;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #000;
+  background: #000;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff66 #000;
+}
+
+/* Mobile-friendly scrollbars */
+html {
+  overflow: overlay; /* ensures scrollbars are usable on mobile */
+}
+
+/* =============================== */
+/*   MOBILE CRT GLOW SCROLLBAR     */
+/* =============================== */
+
+/* For mobile WebKit browsers */
+@supports (-webkit-overflow-scrolling: touch) {
+  ::-webkit-scrollbar-thumb {
+    background: #00ff66;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #00ff66;
+    animation: scrollThumbGlow 1.5s infinite alternate;
+  }
+
+  @keyframes scrollThumbGlow {
+    0% { box-shadow: 0 0 4px #00ff66; }
+    50% { box-shadow: 0 0 10px #00ff66; }
+    100% { box-shadow: 0 0 4px #00ff66; }
+  }
+}
+
+/* Firefox mobile glow */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: #00ff66 #000;
+  }
 }
