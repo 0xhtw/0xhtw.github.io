@@ -3,12 +3,30 @@
 /* =============================== */
 
 body {
-  background: radial-gradient(circle at center, #050000 0%, #000000 100%);
-  color: white;
+  background: radial-gradient(circle at center, #050505 0%, #000000 100%);
+  color: #e0e0e0;
   font-family: 'Lucida Console', Monaco, monospace;
   text-align: center;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay for CRT effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.02) 0px,
+    rgba(255,255,255,0.02) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  z-index: 999;
 }
 
 /* =============================== */
@@ -19,23 +37,16 @@ h1, .about h2, .what-is-htw h2, .writeup-content h1, .writeup-content h2 {
   font-size: 4rem;
   margin-top: 8vh;
   margin-bottom: 4vh;
-  opacity: 0;
-  background: linear-gradient(
-      to bottom,
-      #4d0000 0%,
-      #e60026 40%,
-      #ff0033 60%,
-      #660000 100%
-  );
+  background: linear-gradient(to bottom, #00ff66 0%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeInNeon 2s ease-in forwards,
-             bloodFlicker 5s infinite ease-in-out,
-             bloodFlow 8s infinite ease-in-out;
+  text-shadow: 0 0 4px #00ff66, 0 0 8px #00cc55, 0 0 16px #00ff66;
+  animation: crtFlicker 3s infinite ease-in-out;
   position: relative;
+  transition: transform 0.1s ease;
 }
 
-/* reflection under headings */
+/* Reflection (kept subtle, terminal-glow style) */
 h1::before,
 .about h2::before,
 .what-is-htw h2::before,
@@ -48,27 +59,31 @@ h1::before,
   transform: translateX(-50%) scaleY(-1);
   width: 80%;
   height: 20px;
-  background: linear-gradient(to top, rgba(255,0,0,0.25), transparent);
+  background: linear-gradient(to top, rgba(0,255,102,0.15), transparent);
   filter: blur(4px);
-  opacity: 0.6;
+  opacity: 0.4;
   pointer-events: none;
   border-radius: 50%;
 }
 
-/* subtle streak overlay */
-h1::after,
-.about h2::after,
-.what-is-htw h2::after,
-.writeup-content h1::after,
-.writeup-content h2::after {
-  content: '';
-  position: absolute;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(to bottom, rgba(255,0,0,0.05) 0%, rgba(0,0,0,0.05) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  pointer-events: none;
+/* Flicker animation for CRT feel */
+@keyframes crtFlicker {
+  0%, 100% { opacity: 0.97; text-shadow: 0 0 3px #00ff66; }
+  50% { opacity: 1; text-shadow: 0 0 6px #00ff66, 0 0 12px #00ff66; }
+}
+
+/* Glitch flicker effect on hover */
+h1:hover, h2:hover {
+  animation: glitchText 0.25s steps(2, end) infinite;
+}
+
+@keyframes glitchText {
+  0% { transform: translate(0); }
+  20% { transform: translate(1px, 0); }
+  40% { transform: translate(-1px, 0); }
+  60% { transform: translate(1px, 0); }
+  80% { transform: translate(-1px, 0); }
+  100% { transform: translate(0); }
 }
 
 /* =============================== */
@@ -76,69 +91,22 @@ h1::after,
 /* =============================== */
 
 p {
-  color: white;
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
 nav a {
-  color: white;
+  color: #00ff66;
   margin: 0 15px;
   text-decoration: none;
+  text-shadow: 0 0 4px #00ff66;
+  transition: all 0.2s ease;
 }
 
 nav a:hover {
-  text-shadow: 0 0 6px #ff0033, 0 0 12px #ff1a4b;
-}
-
-/* =============================== */
-/*        NEON / BLOOD FX          */
-/* =============================== */
-
-@keyframes fadeInNeon {
-  0% { 
-    opacity: 0; 
-    text-shadow: none; 
-  }
-  50% { 
-    opacity: 0.5; 
-    text-shadow: 0 0 6px #ff0033; 
-  }
-  100% { 
-    opacity: 1; 
-    text-shadow: 0 0 10px #e60026, 0 0 20px #ff0033, 0 0 40px #ff1a4b; 
-  }
-}
-
-/* liquid flicker */
-@keyframes bloodFlicker {
-  0%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 10px #e60026, 1px 1px 12px #ff0033, -1px -1px 20px #b2001a;
-    filter: blur(0);
-    transform: translateY(0);
-  }
-  20% {
-    opacity: 0.97;
-    text-shadow: 0 0 12px #ff0033, 0 0 24px #ff1a4b, 0 0 40px #e60026;
-  }
-  50% {
-    opacity: 0.94;
-    text-shadow: 0 0 8px #e60026, 0 0 18px #ff0033, 0 0 35px #b2001a;
-  }
-  80% {
-    opacity: 0.98;
-    filter: blur(0.3px);
-    transform: translateY(0.3px);
-  }
-}
-
-/* inner blood flow pulse */
-@keyframes bloodFlow {
-  0%, 100% {
-    text-shadow: 0 0 8px #e60026, 0 0 20px #ff0033, 0 0 40px #ff1a4b;
-  }
-  50% {
-    text-shadow: 0 0 12px #ff1a4b, 0 0 30px #ff0033, 0 0 55px #e60026;
-  }
+  color: #ffffff;
+  text-shadow: 0 0 6px #00ff66, 0 0 12px #00ff66;
 }
 
 /* =============================== */
@@ -188,10 +156,10 @@ nav a:hover {
 /* =============================== */
 
 .writeup-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 50px auto;
   padding: 0 20px;
-  text-align: center; /* please just centre */ 
+  text-align: center;
   line-height: 1.7;
   font-size: 1rem;
   color: #ddd;
@@ -200,44 +168,39 @@ nav a:hover {
 .writeup-content h1 {
   font-size: 2.2rem;
   margin-bottom: 20px;
-  text-align: center; /* keep headings centered */
+  text-align: center;
 }
 
 .writeup-content h2 {
   font-size: 1.6rem;
   margin-top: 30px;
   margin-bottom: 15px;
-  text-align: center; /* optional: centered subheadings */
+  text-align: center;
 }
 
+/* Paragraphs */
 .writeup-content p {
   margin-bottom: 15px;
 }
 
-/* images & GIFs centered neatly within text column */
-.writeup-content img {
-  display: block;
-  margin: 20px auto;
-  max-width: 100%;
-  height: auto;
-}
-
-/* code blocks */
+/* Code blocks */
 .writeup-content pre {
-  background: #111;
-  color: #ff0000;
+  background: #0a0a0a;
+  color: #00ff66;
   padding: 10px 15px;
   border-radius: 6px;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 0.95rem;
   overflow-x: auto;
-  text-align: left;
+  text-align: center;
+  border: 1px solid #00ff66;
+  box-shadow: inset 0 0 8px #00ff66;
 }
 
-/* inline code */
+/* Inline code */
 .writeup-content code {
-  background: #222;
-  color: #ff0000;
+  background: #111;
+  color: #00ff66;
   padding: 2px 5px;
   border-radius: 4px;
   font-size: 0.95rem;
@@ -248,15 +211,15 @@ nav a:hover {
 /* =============================== */
 
 .writeup-content a {
-  color: #ff1a4b;
+  color: #00ff66;
   text-decoration: none;
-  text-shadow: 0 0 5px #e60026, 0 0 10px #ff0033;
+  text-shadow: 0 0 5px #00ff66;
   transition: all 0.2s ease;
 }
 
 .writeup-content a:hover {
-  color: #ff0033;
-  text-shadow: 0 0 8px #ff0033, 0 0 16px #ff1a4b;
+  color: #ffffff;
+  text-shadow: 0 0 8px #00ff66, 0 0 16px #00ff66;
   text-decoration: underline;
 }
 
@@ -266,4 +229,21 @@ nav a:hover {
 
 header h1, .post-title {
   display: none;
+}
+
+/* =============================== */
+/*          SCROLLBAR STYLE        */
+/* =============================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00ff66;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000;
 }
