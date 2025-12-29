@@ -1,23 +1,22 @@
 /* =============================== */
 /*        GLOBAL VARIABLES         */
 /* =============================== */
+/* murdered out cuz*/
 
 :root {
   --bg-black: #000000;
-  --bg-dark: #040404;
-  --bg-panel: #080808;
+  --bg-dark: #050505;
+  --bg-panel: #0a0a0a;
 
-  --text-main: #e8e6e3;   /* murdered out cuz*/
-  --text-muted: #a9a9a9;
+  --text-main: #e6e6e6;
+  --text-muted: #bdbdbd;
 
-  /* Gunmetal steel */
-  --steel-1: #b3b6bb;
-  --steel-2: #8b8f95;
-  --steel-3: #5a5e63;
-  --steel-4: #2f3134;
+  --chrome-light: #d9d9d9;
+  --chrome-mid: #9e9e9e;
+  --chrome-dark: #6f6f6f;
 
-  /* Cold restraint */
-  --cold-glow: rgba(140,160,190,0.18);
+  --chrome-glow-soft: rgba(200,200,200,0.25);
+  --chrome-glow-hard: rgba(255,255,255,0.35);
 }
 
 /* =============================== */
@@ -26,6 +25,8 @@
 
 body {
   background: radial-gradient(circle at center, var(--bg-dark) 0%, var(--bg-black) 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
   color: var(--text-main);
   font-family: 'Lucida Console', Monaco, monospace;
   text-align: center;
@@ -41,29 +42,19 @@ body {
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255,255,255,0.012) 0px,
-    rgba(255,255,255,0.012) 1px,
+    rgba(255,255,255,0.015) 0px,
+    rgba(255,255,255,0.015) 1px,
     transparent 2px,
     transparent 4px
   );
   pointer-events: none;
   z-index: 999;
-}
-
-/* Cold halo */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(
-    circle at 50% 30%,
-    rgba(120,140,170,0.05),
-    transparent 60%
-  );
-  pointer-events: none;
 }
 
 /* =============================== */
@@ -75,21 +66,26 @@ h1,
 .what-is-htw h2,
 .writeup-content h1,
 .writeup-content h2 {
-  color: var(--text-main);
-  background: none;
-  -webkit-text-fill-color: unset;
+  font-size: clamp(1.5rem, 5vw, 4rem);
   margin-top: 5vh;
   margin-bottom: 3vh;
-  letter-spacing: 0.06em;
-  position: relative;
+  background: linear-gradient(
+    to bottom,
+    var(--chrome-light) 0%,
+    var(--chrome-mid) 60%,
+    var(--chrome-dark) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-shadow:
-    0 0 1px rgba(255,255,255,0.4),
-    0 0 8px var(--cold-glow),
-    0 2px 0 var(--steel-4);
-  animation: crtFlicker 4s infinite ease-in-out;
+    0 0 2px rgba(255,255,255,0.25),
+    0 0 6px var(--chrome-glow-soft);
+  animation: crtFlicker 3s infinite ease-in-out;
+  position: relative;
+  letter-spacing: 0.04em;
 }
 
-/* Blade-line accent */
+/* Reflection */
 h1::before,
 .about h2::before,
 .what-is-htw h2::before,
@@ -97,18 +93,15 @@ h1::before,
 .writeup-content h2::before {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -10px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--steel-2),
-    transparent
-  );
+  transform: translateX(-50%) scaleY(-1);
+  width: 80%;
+  height: 18px;
+  background: linear-gradient(to top, rgba(200,200,200,0.12), transparent);
+  filter: blur(3px);
   opacity: 0.35;
+  pointer-events: none;
 }
 
 /* CRT flicker */
@@ -117,7 +110,7 @@ h1::before,
   50% { opacity: 1; }
 }
 
-/* Glitch hover */
+/* Subtle glitch on hover */
 h1:hover,
 h2:hover {
   animation: glitchText 0.25s steps(2, end) infinite;
@@ -136,7 +129,7 @@ h2:hover {
 /* =============================== */
 
 p {
-  color: var(--text-muted);
+  color: var(--text-main);
   line-height: 1.6;
   margin-bottom: 15px;
 }
@@ -146,24 +139,43 @@ p {
 /* =============================== */
 
 nav a {
-  color: var(--steel-2);
+  color: var(--chrome-mid);
   margin: 0.5rem 0.75rem;
   text-decoration: none;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   transition: all 0.2s ease;
+  display: inline-block;
 }
 
 nav a:hover {
-  color: var(--steel-1);
-  text-shadow: 0 0 6px var(--cold-glow);
+  color: var(--chrome-light);
+  text-shadow: 0 0 4px var(--chrome-glow-soft);
 }
 
 /* =============================== */
 /*             ABOUT               */
 /* =============================== */
 
-.about,
+.about {
+  margin-top: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.about h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* =============================== */
+/*          WHAT IS HTW            */
+/* =============================== */
+
 .what-is-htw {
   margin-top: 2rem;
   max-width: 900px;
@@ -175,7 +187,6 @@ nav a:hover {
   color: var(--text-muted);
 }
 
-.about h2,
 .what-is-htw h2 {
   font-size: clamp(1.5rem, 4vw, 2rem);
   text-align: center;
@@ -207,27 +218,31 @@ nav a:hover {
   margin-bottom: 15px;
 }
 
+/* Paragraphs */
+.writeup-content p {
+  margin-bottom: 15px;
+}
+
 /* Code blocks */
 .writeup-content pre {
-  background: linear-gradient(to bottom, #060606, #030303);
-  color: #d4d7db;
+  background: #060606;
+  color: var(--chrome-light);
   padding: 12px 16px;
   border-radius: 6px;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: clamp(0.75rem, 2vw, 0.95rem);
   overflow-x: auto;
-  border: 1px solid var(--steel-4);
-  box-shadow:
-    inset 0 0 12px rgba(0,0,0,0.9),
-    0 0 0 1px rgba(255,255,255,0.02);
+  border: 1px solid var(--chrome-dark);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
 }
 
 /* Inline code */
 .writeup-content code {
-  background: #090909;
-  color: var(--steel-1);
+  background: #0b0b0b;
+  color: var(--chrome-light);
   padding: 2px 5px;
   border-radius: 4px;
+  font-size: clamp(0.75rem, 2vw, 0.95rem);
 }
 
 /* =============================== */
@@ -235,13 +250,13 @@ nav a:hover {
 /* =============================== */
 
 .writeup-content a {
-  color: var(--steel-2);
+  color: var(--chrome-mid);
   text-decoration: none;
 }
 
 .writeup-content a:hover {
-  color: var(--steel-1);
-  text-shadow: 0 0 6px var(--cold-glow);
+  color: var(--chrome-light);
+  text-shadow: 0 0 6px var(--chrome-glow-soft);
   text-decoration: underline;
 }
 
@@ -258,6 +273,7 @@ header h1,
 /*          SCROLLBARS             */
 /* =============================== */
 
+/* WebKit */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -266,20 +282,21 @@ header h1,
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
     to bottom,
-    var(--steel-2),
-    var(--steel-4)
+    var(--chrome-light),
+    var(--chrome-dark)
   );
   border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+  box-shadow: inset 0 0 4px rgba(255,255,255,0.3);
 }
 
 ::-webkit-scrollbar-track {
   background: #000;
 }
 
+/* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--steel-2) #000;
+  scrollbar-color: var(--chrome-mid) #000;
 }
 
 /* =============================== */
@@ -292,4 +309,5 @@ header h1,
   max-width: 100%;
   height: auto;
   border-radius: 6px;
+  box-shadow: none;
 }
