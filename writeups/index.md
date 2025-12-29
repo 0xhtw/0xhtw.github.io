@@ -17,6 +17,6 @@ title: "Writeups"
 
 - [(Writeup underway) Analysis: Hikvision CCTV CVE-2017-7921, one of the most widely known brands, with a very unknown vulnerability. - A look into surveillance and network traversal](hikvision17.md)
 
-- [(Writeup underway) Threat Intel/Scripting: Recognizing flaws in Mother Russia's ransomware variants - Killswitches and friendly fire](defence1.md)
+- [(Writeup underway) Threat Intel/Scripting: Recognizing flaws in Mother Russia's ransomware variants - Patriotism for profit, killswitches and friendly fire](defence1.md)
 
 [← Back to Home](../index.html)
