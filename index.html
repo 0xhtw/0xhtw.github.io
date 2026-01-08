@@ -3,178 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>0xhtw - InfoSec Portfolio</title>
-  
-  <!-- RVHS Font -->
-  <link href="https://fonts.cdnfonts.com/css/real-vhs-font" rel="stylesheet">
-
-  <!-- CSS -->
-  <style>
-    /* =============================== */
-    /*        GLOBAL VARIABLES         */
-    /* =============================== */
-    :root {
-      --bg-black: #000000;
-      --bg-dark: #050505;
-      --bg-panel: #0a0a0a;
-      --text-main: #e6e6e6;
-      --text-muted: #bdbdbd;
-      --chrome-light: #d9d9d9;
-      --chrome-mid: #9e9e9e;
-      --chrome-dark: #6f6f6f;
-      --chrome-glow-soft: rgba(200,200,200,0.25);
-      --chrome-glow-hard: rgba(255,255,255,0.35);
-    }
-
-    /* =============================== */
-    /*           GLOBAL BASE           */
-    /* =============================== */
-    body {
-      background: radial-gradient(circle at center, var(--bg-dark) 0%, var(--bg-black) 100%);
-      color: var(--text-main);
-      font-family: 'Lucida Console', Monaco, monospace;
-      text-align: center;
-      margin: 0;
-      padding: 0 1rem;
-      min-height: 100vh;
-      overflow-x: hidden;
-      text-shadow: 0 0 1px rgba(255,255,255,0.08);
-    }
-
-    /* CRT scanlines */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.015) 0px,
-        rgba(255,255,255,0.015) 1px,
-        transparent 2px,
-        transparent 4px
-      );
-      pointer-events: none;
-      z-index: 999;
-    }
-
-    /* =============================== */
-    /*            HEADINGS             */
-    /* =============================== */
-    h1, h2 {
-      font-family: 'Real VHS Font', monospace;
-      font-size: clamp(1.5rem, 5vw, 4rem);
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(
-        to bottom,
-        var(--chrome-light) 0%,
-        var(--chrome-mid) 60%,
-        var(--chrome-dark) 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow:
-        0 0 2px rgba(255,255,255,0.25),
-        0 0 6px var(--chrome-glow-soft);
-      position: relative;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      animation: crtFlicker 3s infinite ease-in-out,
-                 signalDrop 6s infinite steps(1, end);
-    }
-
-    /* Reflection for VHS look */
-    h1::before, h2::before {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%) scaleY(-1);
-      width: 80%;
-      height: 18px;
-      background: linear-gradient(to top, rgba(200,200,200,0.12), transparent);
-      filter: blur(3px);
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    /* Chromatic bleed */
-    h1::after, h2::after {
-      content: attr(data-text);
-      position: absolute;
-      inset: 0;
-      transform: translateX(2px);
-      color: rgba(255,0,80,0.3);
-      filter: blur(0.7px);
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Animations */
-    @keyframes crtFlicker {
-      0%, 100% { opacity: 0.96; }
-      50% { opacity: 1; }
-    }
-
-    @keyframes signalDrop {
-      0%   { opacity: 1; transform: translateY(0); }
-      7%   { opacity: 0.85; }
-      8%   { opacity: 0.2; transform: translateY(2px); }
-      9%   { opacity: 1; transform: translateY(0); }
-      33%  { opacity: 1; }
-      34%  { opacity: 0.3; transform: translateY(-1px); }
-      35%  { opacity: 1; transform: translateY(0); }
-      71%  { opacity: 1; }
-      72%  { opacity: 0.15; transform: translateY(3px); }
-      73%  { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes vhsJitter {
-      0% { transform: translate(0); }
-      25% { transform: translate(-1px, 0); }
-      50% { transform: translate(1px, 0); }
-      75% { transform: translate(-1px, 0); }
-      100% { transform: translate(0); }
-    }
-
-    h1:hover, h2:hover {
-      animation: vhsJitter 0.15s infinite;
-    }
-
-    /* Text and nav */
-    p {
-      color: var(--text-main);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    nav a {
-      color: var(--chrome-mid);
-      margin: 0.5rem 0.75rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    nav a:hover {
-      color: var(--chrome-light);
-      text-shadow: 0 0 4px var(--chrome-glow-soft);
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom, var(--chrome-light), var(--chrome-dark));
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-track { background: #000; }
-    * { scrollbar-width: thin; scrollbar-color: var(--chrome-mid) #000; }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div class="container">
-    <!-- VHS-style main title -->
+    <!-- Main VHS heading -->
     <h1 data-text="[root@htw ~]$">[root@htw ~]$</h1>
 
-    <p class="subtitle">malware/exploit analysis • security scripting • reverse engineering • threat intel</p>
+    <p class="subtitle">
+      malware/exploit analysis • security scripting • reverse engineering • threat intel
+    </p>
 
     <nav>
       <a href="writeups/index.html">Writeups</a>
@@ -192,9 +30,19 @@
       and improvement, sharing my findings in things such as malware analysis,
       reverse engineering and threat intelligence.
     </p>
+    <p>
+      I dropped out of school from a young age to pursue a career within IT, but 
+      I always knew that I was destined for the infosec field as growing up I had a 
+      natural talent for learning anything hacking and malware related, it didn't take
+      long before I got into trouble at school for shutting all the computers off on the 
+      domain. I won't go into that too much but that's how I knew I wanted to put all my
+      efforts into cybersecurity. I have a deep passion for it, it's not a career path I 
+      desire just to make money, it is something I enjoy doing and continue to improve on
+      in my own personal time.
+    </p>
   </section>
 
-  <!-- What is htw section -->
+  <!-- What is HTW section -->
   <section class="what-is-htw">
     <h2 data-text="WHAT IS HTW?">WHAT IS HTW?</h2>
     <p>
