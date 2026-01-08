@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 /* =============================== */
 /*        GLOBAL VARIABLES         */
 /* =============================== */
@@ -85,6 +87,20 @@ h1,
   letter-spacing: 0.04em;
 }
 
+/* =============================== */
+/*      VHS TITLE OVERRIDE         */
+/* =============================== */
+
+h1,
+.about h2,
+.what-is-htw h2,
+.writeup-content h1,
+.writeup-content h2 {
+  font-family: 'VT323', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* Reflection */
 h1::before,
 .about h2::before,
@@ -104,28 +120,48 @@ h1::before,
   pointer-events: none;
 }
 
+/* VHS chromatic bleed */
+h1::after,
+.about h2::after,
+.what-is-htw h2::after,
+.writeup-content h1::after,
+.writeup-content h2::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 2px;
+  color: rgba(255,0,80,0.25);
+  filter: blur(0.6px);
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* CRT flicker */
 @keyframes crtFlicker {
   0%, 100% { opacity: 0.96; }
   50% { opacity: 1; }
 }
 
-/* Subtle glitch on hover */
-h1:hover,
-h2:hover {
-  animation: glitchText 0.25s steps(2, end) infinite;
-}
+/* =============================== */
+/*         VHS HOVER JITTER        */
+/* =============================== */
 
-@keyframes glitchText {
+@keyframes vhsJitter {
   0% { transform: translate(0); }
-  25% { transform: translate(1px, 0); }
-  50% { transform: translate(-1px, 0); }
-  75% { transform: translate(1px, 0); }
+  20% { transform: translate(-0.5px, 0); }
+  40% { transform: translate(0.5px, 0); }
+  60% { transform: translate(-0.5px, 0); }
+  80% { transform: translate(0.5px, 0); }
   100% { transform: translate(0); }
 }
 
+h1:hover,
+h2:hover {
+  animation: vhsJitter 0.15s infinite;
+}
+
 /* =============================== */
-/*             TEXT                */
+/*             TEXT               */
 /* =============================== */
 
 p {
@@ -273,7 +309,6 @@ header h1,
 /*          SCROLLBARS             */
 /* =============================== */
 
-/* WebKit */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -293,7 +328,6 @@ header h1,
   background: #000;
 }
 
-/* Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--chrome-mid) #000;
