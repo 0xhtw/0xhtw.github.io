@@ -6,7 +6,6 @@
 /* =============================== */
 /*        GLOBAL VARIABLES         */
 /* =============================== */
-
 :root {
   --bg-black: #000000;
   --bg-dark: #050505;
@@ -26,7 +25,6 @@
 /* =============================== */
 /*           GLOBAL BASE           */
 /* =============================== */
-
 body {
   background: radial-gradient(circle at center, var(--bg-dark) 0%, var(--bg-black) 100%);
   background-size: cover;
@@ -64,13 +62,12 @@ body::before {
 /* =============================== */
 /*            HEADINGS             */
 /* =============================== */
-
 h1,
 .about h2,
 .what-is-htw h2,
 .writeup-content h1,
 .writeup-content h2 {
-  font-family: 'Home Video', sans-serif;
+  font-family: 'HomeVideo', monospace; /* VHS font applied */
   font-size: clamp(1.5rem, 5vw, 4rem);
   margin-top: 5vh;
   margin-bottom: 3vh;
@@ -92,7 +89,7 @@ h1,
              signalDrop 6s infinite steps(1, end);
 }
 
-/* Reflection */
+/* Reflection for VHS look */
 h1::before,
 .about h2::before,
 .what-is-htw h2::before,
@@ -111,7 +108,7 @@ h1::before,
   pointer-events: none;
 }
 
-/* VHS chromatic bleed */
+/* Chromatic VHS bleed */
 h1::after,
 .about h2::after,
 .what-is-htw h2::after,
@@ -130,14 +127,11 @@ h1::after,
 /* =============================== */
 /*        ANIMATIONS               */
 /* =============================== */
-
-/* CRT flicker */
 @keyframes crtFlicker {
   0%, 100% { opacity: 0.96; }
   50% { opacity: 1; }
 }
 
-/* Random VHS signal drop */
 @keyframes signalDrop {
   0%   { opacity: 1; transform: translateY(0); }
   7%   { opacity: 0.85; }
@@ -153,7 +147,6 @@ h1::after,
   73%  { opacity: 1; transform: translateY(0); }
 }
 
-/* Hover jitter */
 @keyframes vhsJitter {
   0% { transform: translate(0); }
   25% { transform: translate(-1px, 0); }
@@ -170,7 +163,6 @@ h2:hover {
 /* =============================== */
 /*             TEXT               */
 /* =============================== */
-
 p {
   color: var(--text-main);
   line-height: 1.6;
@@ -180,7 +172,6 @@ p {
 /* =============================== */
 /*           NAVIGATION            */
 /* =============================== */
-
 nav a {
   color: var(--chrome-mid);
   margin: 0.5rem 0.75rem;
@@ -196,7 +187,6 @@ nav a:hover {
 /* =============================== */
 /*             CLEANUP             */
 /* =============================== */
-
 header h1,
 .post-title {
   display: none;
@@ -205,7 +195,6 @@ header h1,
 /* =============================== */
 /*          SCROLLBARS             */
 /* =============================== */
-
 ::-webkit-scrollbar {
   width: 10px;
 }
