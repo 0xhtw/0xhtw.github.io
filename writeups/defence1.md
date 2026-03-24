@@ -7,8 +7,6 @@
 
 ### Track of the session: [Elusin - Silhouette ](https://www.youtube.com/watch?v=gpXAKU_yDy4)
 
-### Not much to say here, my Russian partner put me on this so I thought I'd include it since it's on the playlist. 
-
 
 
 # Chapter I - Background
