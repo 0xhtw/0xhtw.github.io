@@ -63,4 +63,5 @@ The malware will include a small killswitch function if it detects anything Russ
 
 
 How does this protect the actors? Well, it's a form of self-policing. As previously mentioned, enforcement is only put in place by the MVD and FSB (Russian alphabet agency rozzers) when their own are hit. So, this allows them to operate comfortably without the worry of getting nicked, provided the malware actually works, otherwise it's a long day and Uncle Vlad will be having a stern word.
-# WORK IN PROGRESS - PAGE PUBLISHED FOR FORMATTING TEST ^_^
+
+# work in progress, analysing malware
