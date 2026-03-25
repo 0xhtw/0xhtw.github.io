@@ -10,12 +10,14 @@
   --text-main: #f5f5f5;
   --text-muted: #bfbfbf;
 
-  --chrome-light: #ff4d4d;
-  --chrome-mid: #d1001f;
-  --chrome-dark: #5a0008;
+  /* cooler crimson / blood red */
+  --chrome-light: #ff3b4f;
+  --chrome-mid: #c0001a;
+  --chrome-dark: #4a0006;
 
-  --chrome-glow-soft: rgba(209, 0, 31, 0.28);
-  --chrome-glow-hard: rgba(255, 40, 60, 0.45);
+  /* crimson glow, no orange bias */
+  --chrome-glow-soft: rgba(192, 0, 26, 0.35);
+  --chrome-glow-hard: rgba(255, 20, 60, 0.5);
 }
 
 /* =============================== */
@@ -61,20 +63,16 @@ h1,
   font-size: clamp(1.5rem, 5vw, 4rem);
   margin-top: 5vh;
   margin-bottom: 3vh;
-
   color: var(--chrome-mid);
-
   text-shadow:
-    0 0 2px rgba(255,255,255,0.16),
-    0 0 6px var(--chrome-glow-soft),
-    0 0 12px var(--chrome-glow-soft),
-    0 0 18px var(--chrome-glow-soft),
-    0 0 30px var(--chrome-glow-hard);
-
+    0 0 2px rgba(255,255,255,0.12),
+    0 0 4px var(--chrome-glow-soft),
+    0 0 10px var(--chrome-glow-soft),
+    0 0 18px var(--chrome-glow-hard);
   animation:
     crtFlicker 3s infinite ease-in-out,
-    glitchText 0.35s steps(2, end) infinite;
-
+    glitchText 0.35s steps(2, end) infinite,
+    bloodPulse 2.8s infinite ease-in-out;
   position: relative;
   letter-spacing: 0.05em;
 }
@@ -92,9 +90,10 @@ h1::before,
   transform: translateX(-50%) scaleY(-1);
   width: 80%;
   height: 18px;
-  background: linear-gradient(to top, rgba(209, 0, 31, 0.22), transparent);
+  background: linear-gradient(to top, rgba(192, 0, 26, 0.22), transparent);
   filter: blur(4px);
   opacity: 0.4;
+  pointer-events: none;
 }
 
 /* CRT flicker */
@@ -111,6 +110,37 @@ h1::before,
   60% { transform: translate(1px, 0); }
   80% { transform: translate(-1px, 0); }
   100% { transform: translate(0, 0); }
+}
+
+/* Subtle blood pulse */
+@keyframes bloodPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 2px rgba(255,255,255,0.12),
+      0 0 4px var(--chrome-glow-soft),
+      0 0 10px var(--chrome-glow-soft),
+      0 0 18px var(--chrome-glow-hard);
+  }
+  50% {
+    text-shadow:
+      0 0 2px rgba(255,255,255,0.14),
+      0 0 6px var(--chrome-glow-soft),
+      0 0 14px var(--chrome-glow-soft),
+      0 0 24px var(--chrome-glow-hard);
+  }
+}
+
+/* Keep hover red, not orange */
+h1:hover,
+.about h2:hover,
+.what-is-htw h2:hover,
+.writeup-content h1:hover,
+.writeup-content h2:hover {
+  color: var(--chrome-light);
+  text-shadow:
+    0 0 4px var(--chrome-glow-soft),
+    0 0 10px var(--chrome-glow-soft),
+    0 0 18px var(--chrome-glow-hard);
 }
 
 /* =============================== */
@@ -132,15 +162,16 @@ nav a {
   transition: all 0.2s ease;
   display: inline-block;
   text-shadow:
-    0 0 6px var(--chrome-glow-soft),
-    0 0 12px var(--chrome-glow-hard);
+    0 0 4px var(--chrome-glow-soft),
+    0 0 10px var(--chrome-glow-hard);
 }
 
 nav a:hover {
   color: var(--chrome-light);
   text-shadow:
-    0 0 6px var(--chrome-glow-soft),
-    0 0 14px var(--chrome-glow-hard);
+    0 0 4px var(--chrome-glow-soft),
+    0 0 10px var(--chrome-glow-soft),
+    0 0 18px var(--chrome-glow-hard);
 }
 
 /* =============================== */
@@ -214,7 +245,7 @@ nav a:hover {
 
 /* Code blocks */
 .writeup-content pre {
-  background: #050505;
+  background: #040000;
   color: var(--chrome-light);
   padding: 12px 16px;
   border-radius: 6px;
@@ -222,16 +253,25 @@ nav a:hover {
   font-size: clamp(0.75rem, 2vw, 0.95rem);
   overflow-x: auto;
   border: 1px solid var(--chrome-dark);
-  box-shadow: inset 0 0 10px rgba(209, 0, 31, 0.14);
+  box-shadow: inset 0 0 12px rgba(192, 0, 26, 0.2);
 }
 
 /* Inline code */
 .writeup-content code {
-  background: #080808;
+  background: #060000;
   color: var(--chrome-light);
   padding: 2px 5px;
   border-radius: 4px;
   font-size: clamp(0.75rem, 2vw, 0.95rem);
+}
+
+/* Keep code red on hover if wrapped in links */
+.writeup-content a code,
+.writeup-content a:hover code {
+  color: var(--chrome-light);
+  text-shadow:
+    0 0 4px var(--chrome-glow-soft),
+    0 0 10px var(--chrome-glow-hard);
 }
 
 /* =============================== */
@@ -241,15 +281,16 @@ nav a:hover {
   color: var(--chrome-mid);
   text-decoration: none;
   text-shadow:
-    0 0 6px var(--chrome-glow-soft),
-    0 0 12px var(--chrome-glow-hard);
+    0 0 4px var(--chrome-glow-soft),
+    0 0 10px var(--chrome-glow-hard);
 }
 
 .writeup-content a:hover {
   color: var(--chrome-light);
   text-shadow:
-    0 0 6px var(--chrome-glow-soft),
-    0 0 14px var(--chrome-glow-hard);
+    0 0 4px var(--chrome-glow-soft),
+    0 0 10px var(--chrome-glow-soft),
+    0 0 18px var(--chrome-glow-hard);
   text-decoration: underline;
 }
 
