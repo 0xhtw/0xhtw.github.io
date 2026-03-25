@@ -10,12 +10,10 @@
   --text-main: #f5f5f5;
   --text-muted: #bfbfbf;
 
-  /* cooler crimson / blood red */
   --chrome-light: #ff3b4f;
   --chrome-mid: #c0001a;
   --chrome-dark: #4a0006;
 
-  /* crimson glow, no orange bias */
   --chrome-glow-soft: rgba(192, 0, 26, 0.35);
   --chrome-glow-hard: rgba(255, 20, 60, 0.5);
 }
