@@ -159,7 +159,7 @@ And then this:
 
 The C2 token, unobfuscated, sitting in a comment that LITERALLY says "Send the form data and IP to Telegram", in client-side JavaScript that any visitor can read.
 
-A Telegram bot token is a complete credential. WIth it you can read all messages the bot has recieved, send messages as the bot to any chat ID should you have it, rename it, rewrite the description, configure or delete webhooks, it's basically a master key. 
+A Telegram bot token is a complete credential. With it you can read all messages the bot has recieved, send messages as the bot to any chat ID should you have it, rename it, rewrite the description, configure or delete webhooks, it's basically a master key. 
 
 
 I grabbed the token and opened up my Telegram Bot tool I made which interacts with Telegram's API. 
