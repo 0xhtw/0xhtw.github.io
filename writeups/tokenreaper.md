@@ -49,7 +49,7 @@ Unfortunately, I didn't grab a screenshot of the originating email, but the emai
 A convincing "Security Verification" prompt. Styled to look like a legitimate Cloudflare browser check, complete with a "Verify Now" button. It was the kit's first line of defence, make the victim prove they're human before the real phishing page loads. Victims who pass the check get proxied through to the actual Microsoft login.
 
 
-![image](images/mslogin1.png)
+![image](images/mslogin2.png)
 
 
 Of course, I have redacted the users email, but this was the result of passing the "browser check" which we will get into shortly, we can see that we were actually sent through to a Microsoft login page.
