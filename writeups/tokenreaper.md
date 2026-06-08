@@ -96,7 +96,7 @@ Decoding hex escapes manually isn't particularly time-consuming. ```\x77\x65\x62
 The deobfuscated ```looksAutomated()``` function runs a stack of environment checks before the page does anything useful.
 
 
-![image](images/sneaky2fadecoded1.png)
+![image](images/sneaky2fadecoded.png)
 
 
 - ```nav.webdriver```: Catches Selenium and most browser automation frameworks
