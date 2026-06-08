@@ -13,7 +13,7 @@ title: "Writeups"
 
 - [CTF/Reverse Engineering: Unlicensed hacker parties in the depths of London - Who needs a calm environment when partaking in CTFs?](ctf.md)
 
-- [(Writeup underway) Analysis/Reverse Engineering: Going phishing - Pulling apart the guts of a phish](phish1.md)
+- [Analysis/Offensive Operations: Operation TokenReaper - Turning the tables on threat actors](tokenreaper.md)
 
 - [(Writeup underway) Analysis: Old Windows machines and old NSA exploits - A deeper look into EternalBlue](eternalblue.md)
 
