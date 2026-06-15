@@ -106,7 +106,7 @@ Before we crack open the binary, let's run CAPA against it first. CAPA is a tool
 Straight away it's telling us everything we need. RC4 encryption, CRC32, Curve25519, Salsa20, anti-debugging instructions, and crucially: ```resolve function by parsing PE exports```. That last one is the API hashing we'll get into shortly. No explicit locale check flagged, I'll explain why in a moment. 
 
 
-First thing REvil does before it even things about touching a single file is run a geographic check. Lets find it. 
+First thing REvil does before it even thinks about touching a single file is run a geographic check. Lets find it. 
 
 
 ### Finding the killswitch - hunting 0x419
@@ -160,7 +160,7 @@ return 1;  // whitelisted, bail out
 Both return values get masked to 16 bits (```& 0xffff```) and compared against every entry. If either matches, whitelisted, malware exits. Exhaust all 18 without a match, execution continues and your files are getting encrypted. 
 
 
-A couple of things worth noting oon this specific sample. Ukrainian (```0x422```) is in the list. This is a pre-2022 build. After the invasion, REvil builds quitely dropped Ukraine from the whitelist. Geopolitics written directly into the binary, brilliant. Also notice Arabic (Syria) at ```0x2801```. The only non-post-Soviet entry, almost certainly added at the request of a specific affiliate operating out of Syria. 
+A couple of things worth noting on this specific sample. Ukrainian (```0x422```) is in the list. This is a pre-2022 build. After the invasion, REvil builds quietly dropped Ukraine from the whitelist. Geopolitics written directly into the binary, brilliant. Also notice Arabic (Syria) at ```0x2801```. The only non-post-Soviet entry, almost certainly added at the request of a specific affiliate operating out of Syria. 
 
 
 
@@ -212,7 +212,7 @@ CAPA flagged anti-debugging at ```0x40526D```
 ![image](images/revilantidebug.png)
 
 
-```RDTSC``` is called three times, not two. It takes multiple timing deltas and cross-compares them for consistency. If you're stepping through in a debugger the deltas blow out and it clocks you. When it detects a timing anomaly it doesn't just exit, it feeds the delta values into the TEA encryption function (```FUN_00405lal```) and compares outputs. If they don't match, it bails.
+```RDTSC``` is called three times, not two. It takes multiple timing deltas and cross-compares them for consistency. If you're stepping through in a debugger the deltas blow out and it clocks you. When it detects a timing anomaly it doesn't just exit, it feeds the delta values into the TEA encryption function (```FUN_004051a1```) and compares outputs. If they don't match, it bails.
 
 
 It also runs this check 128 times, (```0x80``` iterations). Not a one shot, repeated statistical sampling across the entire pre-execution phase. Patch the jump condition in x64dbg to get past it.
