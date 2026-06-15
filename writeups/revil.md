@@ -154,7 +154,7 @@ return 1;  // whitelisted, bail out
 ```
 
 
-18 hardcoded LANGIDs built on the stack. The two API calls - ```(*DAT_00410094)()``` and ```(*DAT_004100c8)()``` are ```GetSystemDefaultUILanguage``` and ```GetUserDefaultUILangauge```, resolved dynamically at startup via function pointers. That's why CAPA couldn't tag this as a locale check. No named imports anywhere, just raw pointers in a global table populated at runtime. 
+18 hardcoded LANGIDs built on the stack. The two API calls: ```(*DAT_00410094)()``` and ```(*DAT_004100c8)()``` are ```GetSystemDefaultUILanguage``` and ```GetUserDefaultUILangauge```, resolved dynamically at startup via function pointers. That's why CAPA couldn't tag this as a locale check. No named imports anywhere, just raw pointers in a global table populated at runtime. 
 
 
 Both return values get masked to 16 bits (```& 0xffff```) and compared against every entry. If either matches, whitelisted, malware exits. Exhaust all 18 without a match, execution continues and your files are getting encrypted. 
@@ -233,7 +233,7 @@ Textbook KSA - first loop initializes the 256-byte S-box with ```S[i] = i```, se
 ### The config - RC4 encrypted JSON in a custom PE section
 
 
-All of REvil's operational parameters live in an encrypted blob in a custom PE section. This sample uses ```.g2mpw4``` - visible in Ghidra's program trees panel. Different builds use different names (```.grrr, .zeacl``` etc.) to break signature detection. 
+All of REvil's operational parameters live in an encrypted blob in a custom PE section. This sample uses ```.g2mpw4```, visible in Ghidra's program trees panel. Different builds use different names (```.grrr, .zeacl``` etc.) to break signature detection. 
 
 
 Layout of the config blob:
@@ -279,7 +279,7 @@ Key fields from this specific build:
   ```                                                                                                                                
   backup, sophos, memtas, svc$, mepocs, vss, sql, veeam     
   ```                                                                                                                                
-  Sophos gets the boot first. VSS (Volume Shadow Copy) goes too — that's your Windows backup snapshots gone, no easy restore. Veeam
+  Sophos gets the boot first. VSS (Volume Shadow Copy) goes too, that's your Windows backup snapshots gone, no easy restore. Veeam
   is enterprise backup software. They're not being sloppy here, they know exactly what they're killing and why.                      
                                                             
   **`prc`** — processes killed before encryption:                                                                                    
@@ -338,7 +338,7 @@ Key fields from this specific build:
   !!! !!! !!!                                                                                                                        
   ```                                                       
                                                                                                                                      
-"Welcome. Again." Cold as anything. They knew exactly what the law enforcement takedown meant and they came back anyway. The `.onion` address and `decryptor.cc` fallback are both long dead. This is an old build, but the note gives you a proper look at the victim-facing side of the operation. Note the tone: detached, transactional, almost customer-service-like. "Its just a business." That lines up exactly with what was covered back in Chapter II about how these operators frame what they do.
+"Welcome. Again." Cold as anything. They knew exactly what the law enforcement takedown meant and they came back anyway. The `.onion` address and `decryptor.cc` fallback are both long dead. This is an old build, but the note gives you a proper look at the victim-facing side of the operation. Note the tone: detached, transactional, almost customer service like. "Its just a business." That lines up exactly with what was covered back in Chapter II about how these operators frame what they do.
 
 
 # Chapter VI - What can defenders actually do with this?
