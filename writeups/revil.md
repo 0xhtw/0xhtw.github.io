@@ -276,31 +276,25 @@ Key fields from this specific build:
 
 
 **`svc`** — services killed before encryption:
-  ```                                                                                                                                
-  backup, sophos, memtas, svc$, mepocs, vss, sql, veeam     
-  ```                                                                                                                                
-  Sophos gets the boot first. VSS (Volume Shadow Copy) goes too, that's your Windows backup snapshots gone, no easy restore. Veeam
-  is enterprise backup software. They're not being sloppy here, they know exactly what they're killing and why.                      
+```                                                                                                                                
+backup, sophos, memtas, svc$, mepocs, vss, sql, veeam     
+```
+Sophos gets the boot first. VSS (Volume Shadow Copy) goes too, that's your Windows backup snapshots gone, no easy restore. Veeam is enterprise backup software. They're not being sloppy here, they know exactly what they're killing and why.                      
                                                             
-  **`prc`** — processes killed before encryption:                                                                                    
-  ```                                                       
-  winword, excel, outlook, powerpnt, msaccess, mspub, onenote,
-  infopath, visio, wordpad, thunderbird, firefox, thebat,                                                                            
-  oracle, sql, dbeng50, steam...                                                                                                     
-  ```                                                                                                                                
-  The obvious ones — Office suite, email clients, database engines — are killed to release file locks so REvil can encrypt the       
-  documents they're holding open. But Steam being on that list is interesting. This isn't just targeting enterprise environments.    
-  They're going after home users too, anyone with files worth encrypting. No discrimination whatsoever.
-                                                                                                                                     
-  **`dmn`** — the C2 domain list runs to hundreds of entries. None of them are REvil infrastructure. They're all compromised         
-  legitimate websites — florists, dentists, law firms, a Norwegian barging company, a Finnish nursery school. All hacked and injected
-   with C2 code. The traffic from a victim machine beaconing out to `woodleyacademy.org` or `nokesvilledentistry.com` looks          
-  completely normal to a firewall. No purpose-built C2 to take down, no suspicious domains to block. Take one out, hundreds more in
-  the list.
+**`prc`** — processes killed before encryption:                                                                                    
+```                                                       
+winword, excel, outlook, powerpnt, msaccess, mspub, onenote,
+infopath, visio, wordpad, thunderbird, firefox, thebat,                                                                            
+oracle, sql, dbeng50, steam...                                                                                                     
+ ```                                                                                                                            
+The obvious ones — Office suite, email clients, database engines — are killed to release file locks so REvil can encrypt the documents they're holding open. But Steam being on that list is interesting. This isn't just targeting enterprise environments. They're going after home users too, anyone with files worth encrypting. No discrimination whatsoever.
 
-  **The ransom note (excuse poor formatting, pasted from base64 decode output)** (`nbody` decoded from base64 UTF-16LE):                                                                        
+                                                                                                                                     
+**`dmn`** — the C2 domain list runs to hundreds of entries. None of them are REvil infrastructure. They're all compromised legitimate websites — florists, dentists, law firms, a Norwegian barging company, a Finnish nursery school. All hacked and injected with C2 code. The traffic from a victim machine beaconing out to `woodleyacademy.org` or `nokesvilledentistry.com` looks completely normal to a firewall. No purpose-built C2 to take down, no suspicious domains to block. Take one out, hundreds more in the list.
+
+**The ransom note (excuse poor formatting, pasted from base64 decode output)** (`nbody` decoded from base64 UTF-16LE):                                                                        
                 
-  ```                                                                                                                                
+```                                                                                                                                
   ---=== Welcome. Again. ===---          
 
   [+] What's Happened? [+]                                                                                                           
@@ -336,7 +330,7 @@ Key fields from this specific build:
   we (the best specialists) make everything for restoring, but please should                                                         
   not interfere.
   !!! !!! !!!                                                                                                                        
-  ```                                                       
+```                                                       
                                                                                                                                      
 "Welcome. Again." Cold as anything. They knew exactly what the law enforcement takedown meant and they came back anyway. The `.onion` address and `decryptor.cc` fallback are both long dead. This is an old build, but the note gives you a proper look at the victim-facing side of the operation. Note the tone: detached, transactional, almost customer service like. "Its just a business." That lines up exactly with what was covered back in Chapter II about how these operators frame what they do.
 
