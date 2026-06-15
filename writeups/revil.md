@@ -1,11 +1,11 @@
-# Threat Intel/Scripting/Reverse Engineering: Recognizing flaws in Mother Russia’s ransomware variants - Patriotism for profit, killswitches and friendly fire
+# Analysis: Recognizing flaws in Mother Russia’s ransomware variants - Patriotism for profit, killswitches and friendly fire
 
 ![ifYouSeeThisMyGIFHasHadADayOff](https://i.pinimg.com/originals/0e/d6/a9/0ed6a99744c3d2a828311c2257dde3b2.gif)
 
 ### In this writeup, I'll be sharing my knowledge on the modern day ransomware movement and the pioneers behind it. Grab a шашлык (basically a russian kebab from my knowledge, *pronounced Shashlik*), sit back and enjoy the writeup. 
 
 
-### Track of the session: [Elusin - Silhouette ](https://www.youtube.com/watch?v=gpXAKU_yDy4)
+### Track of the session: [BONES, Xavier Wulf, Chris Travis - WeDontBelieveYou](https://www.youtube.com/watch?v=D8AGKWyyrJ8)
 
 
 
@@ -284,7 +284,7 @@ Key fields from this specific build:
 - dmn — hundreds of compromised legitimate websites used as C2. Florists,dentists, law firms — all hacked and injected with C2 code. Blends into normaltraffic, no purpose-built infrastructure to take down
 
 
-- nbody — ransom note, base64 encoded UTF-16LE. Decodes to the classic REvil opener: "---=== Welcome. Again. ===---" — a nod to their return after the 2021 law enforcement takedown.
+- nbody — ransom note, base64 encoded UTF-16LE. Decoded to: "---=== Welcome. Again. ===---" — a nod to their return after the 2021 law enforcement takedown, I guess? 
 
 
 That's REvil. Clean, well engineered and properly thought through. The geographic killswitch alone is a masterclass in operational security - 18 lines of code functioning as a diplomatic non aggression pact baked directly into the binary. Russian authorites will be very happy with that one. 
