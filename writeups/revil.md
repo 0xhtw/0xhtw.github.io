@@ -1,4 +1,4 @@
-# Analysis: Recognizing flaws in Mother Russia’s ransomware variants - Patriotism for profit, killswitches and friendly fire
+# Analysis: Mother Russia’s ransomware variants - Patriotism for profit, killswitches and friendly fire
 
 ![ifYouSeeThisMyGIFHasHadADayOff](https://i.pinimg.com/originals/0e/d6/a9/0ed6a99744c3d2a828311c2257dde3b2.gif)
 
@@ -73,7 +73,25 @@ How does this protect the actors? Well, it's a form of self-policing. As previou
 Alright, let's get into it. I've pulled a REvil / Sodinokibi sample from MalwareBazaar, one of the most prolific ransomware-as-a-service operations to exist. Responsible for multiple ransoms against firms such as Kaseya, etc. 
 
 
-Before we crack it open, let's run ```CAPA``` against it first. ```CAPA``` is a tool by Mandiant that analyses a binary and maps its capabilities before you even open a disassembler. THink of it as a capability fingerprint, it'll tell you what the binary can do and where, saving us from hunting blind in Ghidra. 
+Sample details:                                           
+- **SHA256:** `133bf8be0cf7003b83b03579970997d408a930e58ec2726715140520900c06de`
+- **MD5:** `77be32b91561d1ac5e36464766b7b0a7`                                                                                      
+- **Architecture:** i386 PE
+
+
+A bit of history before we crack it open, because the context matters. REvil didn't appear out of nowhere, it's the direct successor to GandCrab, which was the dominant RaaS operation before it "retired" in 2019 after its operators claimed to have made over $2 billion. REvil picked up where GandCrab left off, same affiliate model, same target profile, significantly more aggressive.
+                                                            
+
+At its peak REvil was responsible for some of the most disruptive ransomware attacks ever recorded. The Kaseya VSA supply chain attack in July 2021 was the big one. They compromised a remote management platform used by MSPs and pushed REvil to over 1,500 businesses downstream in a single hit. Demanded $70 million in Bitcoin for a universal decryptor. Absolute scenes.                 
+
+
+Then in October 2021 law enforcement — a coordinated effort involving the FBI, Europol and several other agencies, took down their infrastructure and arrested several affiliates. REvil went dark. Everyone assumed that was that.
+
+
+Then they came back. Hence the ransom note opening with *"Welcome. Again."* — they knew exactly what they were doing with that line.
+
+
+Before we crack open the binary, let's run CAPA against it first. CAPA is a tool by Mandiant that analyses a binary and maps its capabilities before you even open a disassembler, think of it as a capability fingerprint. It'll tell you what the binary can do and where, saving you from hunting cold in Ghidra.
 
 
 ![image](images/revilcapaoutput.png)
@@ -105,34 +123,34 @@ That drops us straight into ```FUN_004043e2```. Here's what we're looking at:
 
 ```
 local_4c[0]  = 0x419;   // Russian                                                                                                 
-  local_4c[1]  = 0x422;   // Ukrainian                                                                                               
-  local_4c[2]  = 0x423;   // Belarusian
-  local_4c[3]  = 0x428;   // Tajik                                                                                                   
-  local_4c[4]  = 0x42b;   // Armenian                       
-  local_4c[5]  = 0x42c;   // Azerbaijani                                                                                             
-  local_4c[6]  = 0x437;   // Georgian                       
-  local_4c[7]  = 0x43f;   // Kazakh                                                                                                  
-  local_4c[8]  = 0x440;   // Kyrgyz                                                                                                  
-  local_4c[9]  = 0x442;   // Turkmen
-  local_4c[10] = 0x443;   // Uzbek                                                                                                   
-  local_4c[11] = 0x444;   // Tatar                          
-  local_4c[12] = 0x818;   // Romanian (Moldova)                                                                                      
-  local_4c[13] = 0x819;   // Russian (Moldova)                                                                                       
-  local_4c[14] = 0x82c;   // Azerbaijani (Cyrillic)
-  local_4c[15] = 0x843;   // Uzbek (Cyrillic)                                                                                        
-  local_4c[16] = 0x45a;   // Syriac                                                                                                  
-  local_4c[17] = 0x2801;  // Arabic (Syria)                                                                                          
+local_4c[1]  = 0x422;   // Ukrainian                                                                                               
+local_4c[2]  = 0x423;   // Belarusian
+local_4c[3]  = 0x428;   // Tajik                                                                                                   
+local_4c[4]  = 0x42b;   // Armenian                       
+local_4c[5]  = 0x42c;   // Azerbaijani                                                                                             
+local_4c[6]  = 0x437;   // Georgian                       
+local_4c[7]  = 0x43f;   // Kazakh                                                                                                  
+local_4c[8]  = 0x440;   // Kyrgyz                                                                                                  
+local_4c[9]  = 0x442;   // Turkmen
+local_4c[10] = 0x443;   // Uzbek                                                                                                   
+local_4c[11] = 0x444;   // Tatar                          
+local_4c[12] = 0x818;   // Romanian (Moldova)                                                                                      
+local_4c[13] = 0x819;   // Russian (Moldova)                                                                                       
+local_4c[14] = 0x82c;   // Azerbaijani (Cyrillic)
+local_4c[15] = 0x843;   // Uzbek (Cyrillic)                                                                                        
+local_4c[16] = 0x45a;   // Syriac                                                                                                  
+local_4c[17] = 0x2801;  // Arabic (Syria)                                                                                          
                                                                                                                                      
-  uVar1 = (*DAT_00410094)();   // GetSystemDefaultUILanguage                                                                         
-  uVar2 = (*DAT_004100c8)();   // GetUserDefaultUILanguage                                                                           
+uVar1 = (*DAT_00410094)();   // GetSystemDefaultUILanguage                                                                         
+uVar2 = (*DAT_004100c8)();   // GetUserDefaultUILanguage                                                                           
                                                                                                                                      
-  while ((local_4c[uVar3] != (uVar1 & 0xffff) && (local_4c[uVar3] != (uVar2 & 0xffff)))) {                                           
-      uVar3 = uVar3 + 1;
-      if (0x11 < uVar3) {                                                                                                            
-          return 0;  // not whitelisted, continue execution                                                                          
+while ((local_4c[uVar3] != (uVar1 & 0xffff) && (local_4c[uVar3] != (uVar2 & 0xffff)))) {                                           
+    uVar3 = uVar3 + 1;
+    if (0x11 < uVar3) {                                                                                                            
+        return 0;  // not whitelisted, continue execution                                                                          
       }                                                                                                                              
   }                                                                                                                                  
-  return 1;  // whitelisted, bail out
+return 1;  // whitelisted, bail out
 ```
 
 
@@ -176,9 +194,9 @@ Then it walks the PE export table. ```0x3c``` to get ```e_lfanew```, ```+0x78```
 ```
 iVar8 = *(int *)(*(int *)(iVar6 + 0x3c) + 0x78 + iVar6) + iVar6;
                                                                                                                                      
-  if ((uVar7 & 0x1fffff) == (uVar10 & 0x1fffff)) {
-      return function_pointer;                                                                                                       
-  }
+if ((uVar7 & 0x1fffff) == (uVar10 & 0x1fffff)) {
+    return function_pointer;                                                                                                       
+}
 ```
 
 
@@ -257,37 +275,90 @@ Running that against the sample (used JSON to clear it up):
 Key fields from this specific build:
 
 
-- dbg: false — production build, language check fully active
+**`svc`** — services killed before encryption:
+  ```                                                                                                                                
+  backup, sophos, memtas, svc$, mepocs, vss, sql, veeam     
+  ```                                                                                                                                
+  Sophos gets the boot first. VSS (Volume Shadow Copy) goes too — that's your Windows backup snapshots gone, no easy restore. Veeam
+  is enterprise backup software. They're not being sloppy here, they know exactly what they're killing and why.                      
+                                                            
+  **`prc`** — processes killed before encryption:                                                                                    
+  ```                                                       
+  winword, excel, outlook, powerpnt, msaccess, mspub, onenote,
+  infopath, visio, wordpad, thunderbird, firefox, thebat,                                                                            
+  oracle, sql, dbeng50, steam...                                                                                                     
+  ```                                                                                                                                
+  The obvious ones — Office suite, email clients, database engines — are killed to release file locks so REvil can encrypt the       
+  documents they're holding open. But Steam being on that list is interesting. This isn't just targeting enterprise environments.    
+  They're going after home users too, anyone with files worth encrypting. No discrimination whatsoever.
+                                                                                                                                     
+  **`dmn`** — the C2 domain list runs to hundreds of entries. None of them are REvil infrastructure. They're all compromised         
+  legitimate websites — florists, dentists, law firms, a Norwegian barging company, a Finnish nursery school. All hacked and injected
+   with C2 code. The traffic from a victim machine beaconing out to `woodleyacademy.org` or `nokesvilledentistry.com` looks          
+  completely normal to a firewall. No purpose-built C2 to take down, no suspicious domains to block. Take one out, hundreds more in
+  the list.
+
+  **The ransom note (excuse poor formatting, pasted from base64 decode output)** (`nbody` decoded from base64 UTF-16LE):                                                                        
+                
+  ```                                                                                                                                
+  ---=== Welcome. Again. ===---          
+
+  [+] What's Happened? [+]                                                                                                           
+                
+  Your files are encrypted, and currently unavailable. You can check it: all files on your system has extension {EXT}.
+  By the way, everything is possible to recover (restore), but you need to follow our instructions. Otherwise, you cant return your data (NEVER).                                                             
+                                                                                                                                     
+  [+] What guarantees? [+]                                                                                                           
+                                                                                                                                     
+  Its just a business. We absolutely do not care about you and your deals, except getting benefits. If we do not do our work and liabilities - nobody will not cooperate with us. Its not in our interests.                                                                              
+  To check the ability of returning files, You should go to our website.                                                             
+  There you can decrypt one file for free. That is our guarantee.                                                                    
+  If you will not cooperate with our service - for us, its does not matter.                                                          
+  But you will lose your time and data, cause just we have the private key.                                                          
+  In practice - time is much more valuable than money.                                                                               
+                                                                                                                                     
+  [+] How to get access on website? [+]                                                                                              
+                                                                                                                                     
+  You have two ways:                                                                                                                 
+   
+  1) [Recommended] Using a TOR browser!                                                                                              
+  a) Download and install TOR browser from this site: https://torproject.org/
+  b) Open our website: http://aplebzu47wgazapdqks6vrcv6zcnjppkbxbr6wketf56nf6aq2nmyoyd.onion/{UID}                                
+                                                                                                                                     
+  2) If TOR blocked in your country, try to use VPN! But you can use our secondary website. For this:                                                                                                       
+  a) Open your any browser (Chrome, Firefox, Opera, IE, Edge)
+  b) Open our secondary website: http://decryptor.cc/{UID}
+                                                                                                                                     
+  !!! DANGER !!!
+  DONT try to change files by yourself, DONT use any third party software for restoring your data or antivirus solutions - its may entail damage of the private key and, as result, The Loss all data.                                                                                     
+  !!! !!! !!!                                                                                                                        
+  ONE MORE TIME: Its in your interests to get your files back. From our side,                                                        
+  we (the best specialists) make everything for restoring, but please should                                                         
+  not interfere.
+  !!! !!! !!!                                                                                                                        
+  ```                                                       
+                                                                                                                                     
+"Welcome. Again." Cold as anything. They knew exactly what the law enforcement takedown meant and they came back anyway. The `.onion` address and `decryptor.cc` fallback are both long dead. This is an old build, but the note gives you a proper look at the victim-facing side of the operation. Note the tone: detached, transactional, almost customer-service-like. "Its just a business." That lines up exactly with what was covered back in Chapter II about how these operators frame what they do.
 
 
-- et: 1 — encrypts first 1MB of each file only, speed over completeness
+# Chapter VI - What can defenders actually do with this?
+
+All of this is useful beyond just being interesting, there are concrete defensive takeaways from tearing a sample apart like this.
 
 
-- exp: false — CVE-2018-8453 privilege escalation disabled (can BSOD the machine)
+**Hunt for the killswitch in your environment.** If you're a defender and you know Russian ransomware families check for locale settings, you can use that against them. Honeypot machines with Russian keyboard layouts or locale settings installed can cause some families to self-terminate on contact. It's a genuine defensive technique, cheap to implement, and has been documented working against REvil and similar families.                      
 
 
-- wipe: false — no directory wiping on this build
+**VSS deletion is a high-confidence indicator.** The `svc` list killing `vss` (Volume Shadow Copy) is one of the most reliable pre-ransomware signals you can alert on. Legitimate software almost never touches VSS from the command line. If you see `vssadmin delete shadows` or `wmic shadowcopy delete` firing on an endpoint, that's ransomware prep, full stop. Get an alert on it.         
 
 
-- sub: 3472 — affiliate campaign ID, identifies exactly which operator deployed this
+**The `prc` kill list tells you what to monitor.** Any process that kills Word, Excel, Outlook, SQL Server and Veeam in rapid succession before doing anything else is not behaving normally. Process tree monitoring catches this pattern early, before encryption starts.                                                                                                                 
 
 
-- svc — kills backup, Sophos, VSS, SQL, Veeam before encrypting
+**C2 over compromised legitimate domains is hard to block but not impossible to detect.** The `dmn` field shows hundreds of benign-looking domains. You can't blocklist them all without breaking legitimate traffic. But the beacon pattern — periodic HTTP requests to multiple external domains with consistent timing intervals — is detectable in network flow data. Look for the cadence, not the destination.                                      
 
 
-- prc — kills Word, Excel, Outlook, SQL engines etc. to release file locks before encryption starts
-
-
-- arn: true — persistence enabled
-
-
-- dmn — hundreds of compromised legitimate websites used as C2. Florists,dentists, law firms — all hacked and injected with C2 code. Blends into normaltraffic, no purpose-built infrastructure to take down
-
-
-- nbody — ransom note, base64 encoded UTF-16LE. Decoded to: "---=== Welcome. Again. ===---" — a nod to their return after the 2021 law enforcement takedown, I guess? 
-
-
-That's REvil. Clean, well engineered and properly thought through. The geographic killswitch alone is a masterclass in operational security - 18 lines of code functioning as a diplomatic non aggression pact baked directly into the binary. Russian authorites will be very happy with that one. 
+**The config extraction script is a defender tool too.** If you recover a REvil binary from an incident, run the config extractor before you do anything else. The `sub` and `pid` fields identify the affiliate who deployed it, the `dmn` list gives you the C2 infrastructure to hunt for in your logs, and the `prc` list tells you what processes the attacker expected to find running, which gives you a profile of the intended target environment.
 
 
 If you're this far, thanks for reading! Was a fun 2/3 hour session. 
