@@ -519,44 +519,6 @@ footer {
   .we-type      { min-width: 70px; font-size: 0.62rem; }
 }
 
-/* ── BOOT OVERLAY ── */
-#boot-overlay {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font);
-  transition: opacity 0.7s ease;
-}
-
-#boot-overlay.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#boot-lines {
-  width: 100%;
-  max-width: 640px;
-  padding: 0 2rem;
-}
-
-.boot-line {
-  font-size: clamp(0.72rem, 1.5vw, 0.84rem);
-  color: var(--text-muted);
-  line-height: 1.9;
-  opacity: 0;
-  animation: lineIn 0.07s ease forwards;
-}
-
-.boot-line .ok  { color: var(--green); }
-.boot-line .err { color: var(--red-bright); }
-.boot-final     { color: var(--text); margin-top: 0.4rem; }
-
-@keyframes lineIn { to { opacity: 1; } }
-
 /* ── STATUS LINE ── */
 .status-line {
   margin-top: 0.55rem;
@@ -584,4 +546,95 @@ footer {
   animation: blink 1s step-end infinite;
   opacity: 0.65;
   margin-left: 1px;
+}
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0.85rem 1.5rem;
+  align-items: center;
+}
+
+.contact-platform {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contact-platform::before { content: '> '; color: var(--red); }
+
+.contact-handle {
+  color: var(--red-bright);
+  text-decoration: none;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 8px var(--glow-soft);
+  transition: color 0.15s, text-shadow 0.15s;
+}
+
+a.contact-handle:hover {
+  color: #fff;
+  text-shadow: 0 0 8px var(--glow-soft), 0 0 22px var(--glow-hard);
+}
+
+/* ── CURSOR TRAIL ── */
+.trail-dot {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--red-bright);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.trail-dot.trail-on {
+  animation: trailFade 0.55s ease forwards;
+}
+
+@keyframes trailFade {
+  0%   { opacity: 0.5;  transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0;    transform: translate(-50%, -50%) scale(0.2); }
+}
+
+/* ── GLITCH ── */
+#terminal-output { position: relative; }
+
+#terminal-output::before,
+#terminal-output::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#terminal-output.glitching::before {
+  color: var(--blue);
+  animation: glitchA 0.35s steps(2) forwards;
+  clip-path: polygon(0 15%, 100% 15%, 100% 45%, 0 45%);
+}
+
+#terminal-output.glitching::after {
+  color: var(--red-bright);
+  animation: glitchB 0.35s steps(2) forwards;
+  clip-path: polygon(0 55%, 100% 55%, 100% 85%, 0 85%);
+}
+
+@keyframes glitchA {
+  0%   { opacity: 0.8; transform: translateX(-4px); }
+  50%  { opacity: 0.6; transform: translateX(3px); }
+  100% { opacity: 0;   transform: translateX(0); }
+}
+
+@keyframes glitchB {
+  0%   { opacity: 0.8; transform: translateX(4px); }
+  50%  { opacity: 0.6; transform: translateX(-3px); }
+  100% { opacity: 0;   transform: translateX(0); }
 }
