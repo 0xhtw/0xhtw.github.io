@@ -1,151 +1,234 @@
-<!DOCTYPE html>                                                                                                                    
-  <html lang="en">                                          
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>0xhtw — InfoSec Portfolio</title>                                                                                         
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>                                                             
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">                                                                              
-  </head>                                                   
-                                                                                                                                     
-    <header class="hero">
-      <div class="hero-glow"></div>
-      <img class="hero-reaper" src="assets/images/reaper.jpg" alt="">
-      <div class="hero-inner">     
-                                                                                                                                     
-        <div class="terminal-block">
-          <div class="terminal-line">                                                                                                
-            <span class="prompt">                           
-              <span class="p-b">[</span><span class="p-u">root</span><span class="p-at">@</span><span class="p-h">htw</span><span    
-  class="p-t"> ~</span><span class="p-b">]</span><span class="p-d">$</span>                                                       
-            </span>&nbsp;<span class="typed-cmd" id="typed-cmd"></span><span class="cursor" id="cursor">█</span>                     
-          </div>                                                                                                
-          <div class="terminal-output" id="terminal-output"></div>                                                                   
-        </div>                                                    
-                                                                                                                                     
-        <p class="tagline">                                 
-          <span>malware/exploit analysis</span>                                                                                      
-          <span class="dot">•</span>                        
-          <span>security scripting</span>                                                                                            
-          <span class="dot">•</span>     
-          <span>reverse engineering</span>                                                                                           
-          <span class="dot">•</span>                                                                                                 
-          <span>threat intel</span> 
-        </p>                                                                                                                         
-                                                            
-        <nav>
-          <a href="writeups/index.html">[ writeups ]</a>                                                                             
-          <a href="https://github.com/0xhtw" target="_blank" rel="noopener">[ github ]</a>
-        </nav>                                                                                                                       
-      </div>                                                
-    </header>                                                                                                                        
-                                                            
-    <main>                                                                                                                           
-                                                            
-      <section class="panel" id="about">
-        <div class="panel-header">      
-          <span class="panel-fname">// about.txt</span>
-          <span class="panel-status ok">[ OK ]</span>                                                                                
-        </div>                                       
-        <div class="panel-body">                                                                                                     
-          <p>Hi, I'm 0xhtw. At least that is what I go by when publishing my works online. I love computers, cars, music, art and
-  most importantly anything cybersecurity. I started from a young age and I am dedicated to persistent self-development and          
-  improvement, sharing my findings in things such as malware analysis, reverse engineering and threat intelligence.</p>              
-          <p>I dropped out of school from a young age to pursue a career within IT, but I always knew that I was destined for the
-  infosec field. Growing up I had a natural talent for learning anything hacking and malware related — it didn't take long before I  
-  got into trouble at school for shutting all the computers off on the domain. I have a deep passion for it; it's not a career path I
-   desire just to make money, it is something I enjoy doing and continue to improve on in my own personal time.</p>                  
-        </div>                                                                                                                       
-      </section>                                            
-                
-      <section class="panel" id="focus">
-        <div class="panel-header">      
-          <span class="panel-fname">// focus.sh</span>
-          <span class="panel-status loaded">[ LOADED ]</span>
-        </div>                                                                                                                       
-        <div class="panel-body">
-          <div class="tags">                                                                                                         
-            <span class="tag">malware analysis</span>       
-            <span class="tag">reverse engineering</span>                                                                             
-            <span class="tag">exploit analysis</span>   
-            <span class="tag">threat intelligence</span>                                                                             
-            <span class="tag">security scripting</span>                                                                              
-            <span class="tag">osint</span>             
-            <span class="tag">python</span>                                                                                          
-            <span class="tag">bash</span>                   
-            <span class="tag">ghidra</span>                                                                                          
-            <span class="tag">wireshark</span>
-            <span class="tag">ctf</span>                                                                                             
-          </div>                                            
-        </div>                                                                                                                       
-      </section>
-                                                                                                                                     
-      <section class="panel" id="htw">                      
-        <div class="panel-header">    
-          <span class="panel-fname">// htw.md</span>
-          <span class="panel-status readme">[ README ]</span>
-        </div>                                                                                                                       
-        <div class="panel-body">
-          <p>HTW stands for <strong>Hack The World</strong> — began in Milton Keynes, a city with a reputation for pioneering tech   
-  and bold urban design. What started as a small artistic collective evolved into a small group of people passionate about        
-  creativity, technology and exploration in both urban and digital senses.</p>                                                       
-          <p>HTW exists across different spaces, both online and offline. Representing our crossover between urban street art culture
-   and technology. It's more than a crew, it's a mindset of exploration, experimentation, and pushing boundaries.</p>                
-          <p>That philosophy guides my work in cybersecurity: the drive to learn, to innovate and share knowledge in ways that make  
-  systems stronger and uncover new findings in the forever evolving world of cybersecurity.</p>                                    
-        </div>                                                                                                                       
-      </section>                                            
-                                                                                                                                     
-    </main>                                                 
-           
-    <footer>
-      <div class="footer-inner">
-        <span class="footer-handle">0xhtw</span>
-        <div class="footer-links">              
-          <a href="writeups/index.html">writeups</a>                                                                                 
-          <a href="https://github.com/0xhtw" target="_blank" rel="noopener">github</a>
-        </div>                                                                                                                       
-        <span class="footer-motto">// no system is safe //</span>                                                                    
-      </div>
-    </footer>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0xhtw — InfoSec Portfolio</title>
+  <meta name="description" content="0xhtw — malware analysis, reverse engineering, threat intelligence &amp; security research.">
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://0xhtw.github.io/">
+  <meta property="og:title"        content="0xhtw — InfoSec Portfolio">
+  <meta property="og:description"  content="malware analysis · reverse engineering · threat intel · security scripting">
+  <meta property="og:image"        content="https://0xhtw.github.io/assets/img/og.svg">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="0xhtw — InfoSec Portfolio">
+  <meta name="twitter:description" content="malware analysis · reverse engineering · threat intel · security scripting">
+  <meta name="twitter:image"       content="https://0xhtw.github.io/assets/img/og.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
 
-    <script>
-      const cmdEl    = document.getElementById('typed-cmd');                                                                         
+  <div id="boot-overlay" aria-hidden="true"><div id="boot-lines"></div></div>
+
+  <header class="hero">
+    <div class="hero-glow"></div>
+    <img class="hero-reaper" src="assets/images/reaper.jpg" alt="">
+    <div class="hero-inner">
+
+      <div class="terminal-block">
+        <div class="terminal-line">
+          <span class="prompt">
+            <span class="p-b">[</span><span class="p-u">root</span><span class="p-at">@</span><span class="p-h">htw</span><span class="p-t"> ~</span><span class="p-b">]</span><span class="p-d">$</span>
+          </span>&nbsp;<span class="typed-cmd" id="typed-cmd"></span><span class="cursor" id="cursor">█</span>
+        </div>
+        <div class="terminal-output" id="terminal-output"></div>
+        <div class="status-line" id="status-line">
+          <span class="status-prefix">// currently:&nbsp;</span><span id="status-text">analysing malware</span><span class="status-blink">_</span>
+        </div>
+      </div>
+
+      <p class="tagline">
+        <span>malware/exploit analysis</span>
+        <span class="dot">•</span>
+        <span>security scripting</span>
+        <span class="dot">•</span>
+        <span>reverse engineering</span>
+        <span class="dot">•</span>
+        <span>threat intel</span>
+      </p>
+
+      <nav>
+        <a href="writeups/index.html">[ writeups ]</a>
+        <a href="https://github.com/0xhtw" target="_blank" rel="noopener">[ github ]</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="panel" id="about">
+      <div class="panel-header">
+        <span class="panel-fname">// about.txt</span>
+        <span class="panel-status ok">[ OK ]</span>
+      </div>
+      <div class="panel-body">
+        <p>Hi, I'm 0xhtw. At least that is what I go by when publishing my works online. I love computers, cars, music, art and most importantly anything cybersecurity. I started from a young age and I am dedicated to persistent self-development and improvement, sharing my findings in things such as malware analysis, reverse engineering and threat intelligence.</p>
+        <p>I dropped out of school from a young age to pursue a career within IT, but I always knew that I was destined for the infosec field. Growing up I had a natural talent for learning anything hacking and malware related — it didn't take long before I got into trouble at school for shutting all the computers off on the domain. I have a deep passion for it; it's not a career path I desire just to make money, it is something I enjoy doing and continue to improve on in my own personal time.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="focus">
+      <div class="panel-header">
+        <span class="panel-fname">// focus.sh</span>
+        <span class="panel-status loaded">[ LOADED ]</span>
+      </div>
+      <div class="panel-body">
+        <div class="tags">
+          <span class="tag">malware analysis</span>
+          <span class="tag">reverse engineering</span>
+          <span class="tag">exploit analysis</span>
+          <span class="tag">threat intelligence</span>
+          <span class="tag">security scripting</span>
+          <span class="tag">osint</span>
+          <span class="tag">python</span>
+          <span class="tag">bash</span>
+          <span class="tag">ghidra</span>
+          <span class="tag">wireshark</span>
+          <span class="tag">ctf</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="htw">
+      <div class="panel-header">
+        <span class="panel-fname">// htw.md</span>
+        <span class="panel-status readme">[ README ]</span>
+      </div>
+      <div class="panel-body">
+        <p>HTW stands for <strong>Hack The World</strong> — began in Milton Keynes, a city with a reputation for pioneering tech and bold urban design. What started as a small artistic collective evolved into a small group of people passionate about creativity, technology and exploration in both urban and digital senses.</p>
+        <p>HTW exists across different spaces, both online and offline. Representing our crossover between urban street art culture and technology. It's more than a crew, it's a mindset of exploration, experimentation, and pushing boundaries.</p>
+        <p>That philosophy guides my work in cybersecurity: the drive to learn, to innovate and share knowledge in ways that make systems stronger and uncover new findings in the forever evolving world of cybersecurity.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-handle">0xhtw</span>
+      <div class="footer-links">
+        <a href="writeups/index.html">writeups</a>
+        <a href="https://github.com/0xhtw" target="_blank" rel="noopener">github</a>
+      </div>
+      <span class="footer-motto">// no system is safe //</span>
+    </div>
+  </footer>
+
+  <script>
+    const BOOT_LINES = [
+      { html: 'BIOS v2.1 — POST complete.' },
+      { html: '[  <span class="ok">OK</span>  ] memory: 32768 MB' },
+      { html: '[  <span class="ok">OK</span>  ] kernel modules loaded' },
+      { html: '[  <span class="ok">OK</span>  ] filesystems mounted' },
+      { html: '[  <span class="ok">OK</span>  ] network interfaces up' },
+      { html: '[  <span class="ok">OK</span>  ] loading threat intel feeds' },
+      { html: '[  <span class="ok">OK</span>  ] initializing analysis environment' },
+      { html: '[  <span class="ok">OK</span>  ] decrypting keystore' },
+      { html: '' },
+      { html: '// system ready — welcome, 0xhtw //', final: true },
+    ];
+
+    function runBoot(onDone) {
+      const overlay   = document.getElementById('boot-overlay');
+      const container = document.getElementById('boot-lines');
+      let   t         = 300;
+
+      BOOT_LINES.forEach(line => {
+        const gap = line.html === '' ? 320 : 80 + Math.random() * 160;
+        t += gap;
+        setTimeout(() => {
+          const el     = document.createElement('div');
+          el.className = 'boot-line' + (line.final ? ' boot-final' : '');
+          el.innerHTML = line.html;
+          container.appendChild(el);
+        }, t);
+      });
+
+      setTimeout(() => {
+        overlay.classList.add('fade-out');
+        setTimeout(() => { overlay.style.display = 'none'; }, 750);
+        onDone();
+      }, t + 600);
+    }
+
+    if (sessionStorage.getItem('booted')) {
+      document.getElementById('boot-overlay').style.display = 'none';
+      initPage();
+    } else {
+      sessionStorage.setItem('booted', '1');
+      runBoot(initPage);
+    }
+
+    function initPage() {
+      const cmdEl    = document.getElementById('typed-cmd');
       const outputEl = document.getElementById('terminal-output');
-      const cursorEl = document.getElementById('cursor');                                                                            
-   
-      let i = 0;                                                                                                                     
-                                                            
+      const cursorEl = document.getElementById('cursor');
+      let   i        = 0;
+
       function typeChar() {
         const cmd = 'whoami';
         if (i < cmd.length) {
           cmdEl.textContent += cmd[i++];
-          setTimeout(typeChar, 85 + Math.random() * 45);                                                                             
+          setTimeout(typeChar, 85 + Math.random() * 45);
         } else {
-          setTimeout(showOutput, 550);                                                                                               
-        }                                                   
+          setTimeout(showOutput, 550);
+        }
       }
 
       function showOutput() {
         cursorEl.style.display = 'none';
         outputEl.textContent   = '0xhtw';
-        outputEl.classList.add('visible');                                                                                           
+        outputEl.classList.add('visible');
+        setTimeout(showStatus, 900);
       }
-                                                                                                                                     
-      setTimeout(typeChar, 800);                            
+
+      setTimeout(typeChar, 800);
+
+      const STATUSES = [
+        'analysing malware samples',
+        'reverse engineering binaries',
+        'hunting threats',
+        'reading CVEs',
+        'tracing syscalls',
+        'deobfuscating scripts',
+        'building new tools',
+      ];
+
+      const statusEl  = document.getElementById('status-text');
+      const statusDiv = document.getElementById('status-line');
+      let   sIdx      = 0;
+
+      function showStatus() {
+        statusDiv.classList.add('visible');
+        cycle();
+      }
+
+      function cycle() {
+        setTimeout(() => {
+          statusEl.classList.add('fade');
+          setTimeout(() => {
+            sIdx = (sIdx + 1) % STATUSES.length;
+            statusEl.textContent = STATUSES[sIdx];
+            statusEl.classList.remove('fade');
+            cycle();
+          }, 380);
+        }, 4200);
+      }
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, idx) => {
-          if (entry.isIntersecting) {                                                                                                
+          if (entry.isIntersecting) {
             setTimeout(() => entry.target.classList.add('in-view'), idx * 80);
-            observer.unobserve(entry.target);                                                                                        
-          }                                                 
+            observer.unobserve(entry.target);
+          }
         });
       }, { threshold: 0.12 });
-                                                                                                                                     
+
       document.querySelectorAll('.panel').forEach(p => observer.observe(p));
-    </script>                                                                                                                        
-  </body>                                                   
-  </html>
+    }
+  </script>
+</body>
+</html>
