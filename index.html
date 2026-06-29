@@ -21,8 +21,6 @@
 </head>
 <body>
 
-  <div id="boot-overlay" aria-hidden="true"><div id="boot-lines"></div></div>
-
   <header class="hero">
     <div class="hero-glow"></div>
     <img class="hero-reaper" src="assets/images/reaper.jpg" alt="">
@@ -104,6 +102,23 @@
       </div>
     </section>
 
+    <section class="panel" id="contact">
+      <div class="panel-header">
+        <span class="panel-fname">// contact.sh</span>
+        <span class="panel-status ok">[ OPEN ]</span>
+      </div>
+      <div class="panel-body">
+        <div class="contact-grid">
+          <span class="contact-platform">telegram</span>
+          <a href="https://t.me/tanaHTW" class="contact-handle" target="_blank" rel="noopener">@tanaHTW</a>
+          <span class="contact-platform">email</span>
+          <a href="mailto:tana6ixx@mail.ru" class="contact-handle">tana6ixx@mail.ru</a>
+          <span class="contact-platform">discord</span>
+          <span class="contact-handle">kutthroattana</span>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -118,50 +133,31 @@
   </footer>
 
   <script>
-    const BOOT_LINES = [
-      { html: 'BIOS v2.1 — POST complete.' },
-      { html: '[  <span class="ok">OK</span>  ] memory: 32768 MB' },
-      { html: '[  <span class="ok">OK</span>  ] kernel modules loaded' },
-      { html: '[  <span class="ok">OK</span>  ] filesystems mounted' },
-      { html: '[  <span class="ok">OK</span>  ] network interfaces up' },
-      { html: '[  <span class="ok">OK</span>  ] loading threat intel feeds' },
-      { html: '[  <span class="ok">OK</span>  ] initializing analysis environment' },
-      { html: '[  <span class="ok">OK</span>  ] decrypting keystore' },
-      { html: '' },
-      { html: '// system ready — welcome, 0xhtw //', final: true },
-    ];
-
-    function runBoot(onDone) {
-      const overlay   = document.getElementById('boot-overlay');
-      const container = document.getElementById('boot-lines');
-      let   t         = 300;
-
-      BOOT_LINES.forEach(line => {
-        const gap = line.html === '' ? 320 : 80 + Math.random() * 160;
-        t += gap;
-        setTimeout(() => {
-          const el     = document.createElement('div');
-          el.className = 'boot-line' + (line.final ? ' boot-final' : '');
-          el.innerHTML = line.html;
-          container.appendChild(el);
-        }, t);
+    // ── Cursor trail ─────────────────────────────────────────────────
+    (function () {
+      const POOL = 18;
+      const dots = [];
+      for (let i = 0; i < POOL; i++) {
+        const d = document.createElement('div');
+        d.className = 'trail-dot';
+        document.body.appendChild(d);
+        dots.push(d);
+      }
+      let idx = 0, last = 0;
+      document.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - last < 28) return;
+        last = now;
+        const d = dots[idx++ % POOL];
+        d.style.left = e.clientX + 'px';
+        d.style.top  = e.clientY + 'px';
+        d.classList.remove('trail-on');
+        void d.offsetWidth;
+        d.classList.add('trail-on');
       });
+    })();
 
-      setTimeout(() => {
-        overlay.classList.add('fade-out');
-        setTimeout(() => { overlay.style.display = 'none'; }, 750);
-        onDone();
-      }, t + 600);
-    }
-
-    if (sessionStorage.getItem('booted')) {
-      document.getElementById('boot-overlay').style.display = 'none';
-      initPage();
-    } else {
-      sessionStorage.setItem('booted', '1');
-      runBoot(initPage);
-    }
-
+    // ── Page init ────────────────────────────────────────────────────
     function initPage() {
       const cmdEl    = document.getElementById('typed-cmd');
       const outputEl = document.getElementById('terminal-output');
@@ -181,12 +177,15 @@
       function showOutput() {
         cursorEl.style.display = 'none';
         outputEl.textContent   = '0xhtw';
+        outputEl.dataset.text  = '0xhtw';
         outputEl.classList.add('visible');
         setTimeout(showStatus, 900);
+        scheduleGlitch();
       }
 
       setTimeout(typeChar, 800);
 
+      // ── Status cycling ─────────────────────────────────────────────
       const STATUSES = [
         'analysing malware samples',
         'reverse engineering binaries',
@@ -196,7 +195,6 @@
         'deobfuscating scripts',
         'building new tools',
       ];
-
       const statusEl  = document.getElementById('status-text');
       const statusDiv = document.getElementById('status-line');
       let   sIdx      = 0;
@@ -218,6 +216,18 @@
         }, 4200);
       }
 
+      // ── Glitch ─────────────────────────────────────────────────────
+      function scheduleGlitch() {
+        setTimeout(() => {
+          outputEl.classList.add('glitching');
+          setTimeout(() => {
+            outputEl.classList.remove('glitching');
+            scheduleGlitch();
+          }, 350);
+        }, 5000 + Math.random() * 9000);
+      }
+
+      // ── Scroll reveal ──────────────────────────────────────────────
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, idx) => {
           if (entry.isIntersecting) {
@@ -229,6 +239,8 @@
 
       document.querySelectorAll('.panel').forEach(p => observer.observe(p));
     }
+
+    initPage();
   </script>
 </body>
 </html>
