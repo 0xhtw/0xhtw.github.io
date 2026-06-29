@@ -108,8 +108,43 @@
         </div>                                                                                                                       
         <span class="footer-motto">// no system is safe //</span>                                                                    
       </div>
-    </footer>                                                                                                                        
+    </footer>
+
+    <script>
+      const cmdEl    = document.getElementById('typed-cmd');                                                                         
+      const outputEl = document.getElementById('terminal-output');
+      const cursorEl = document.getElementById('cursor');                                                                            
+   
+      let i = 0;                                                                                                                     
                                                             
-    <script src="assets/js/main.js"></script>                                                                                        
+      function typeChar() {
+        const cmd = 'whoami';
+        if (i < cmd.length) {
+          cmdEl.textContent += cmd[i++];
+          setTimeout(typeChar, 85 + Math.random() * 45);                                                                             
+        } else {
+          setTimeout(showOutput, 550);                                                                                               
+        }                                                   
+      }
+
+      function showOutput() {
+        cursorEl.style.display = 'none';
+        outputEl.textContent   = '0xhtw';
+        outputEl.classList.add('visible');                                                                                           
+      }
+                                                                                                                                     
+      setTimeout(typeChar, 800);                            
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, idx) => {
+          if (entry.isIntersecting) {                                                                                                
+            setTimeout(() => entry.target.classList.add('in-view'), idx * 80);
+            observer.unobserve(entry.target);                                                                                        
+          }                                                 
+        });
+      }, { threshold: 0.12 });
+                                                                                                                                     
+      document.querySelectorAll('.panel').forEach(p => observer.observe(p));
+    </script>                                                                                                                        
   </body>                                                   
   </html>
