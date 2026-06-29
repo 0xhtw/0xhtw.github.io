@@ -1,4 +1,10 @@
-title: "0xhtw"
-description: "cybersecurity research, reverse engineering, threat intel"
-baseurl: ""
-url: "https://0xhtw.github.io"
+title: "0xhtw"                                                                                                                     
+  description: "cybersecurity research, reverse engineering, threat intel"                                                           
+  baseurl: ""                                                                                                                        
+  url: "https://0xhtw.github.io"                                                                                                     
+                                                                                                                                     
+  defaults:                                                                                                                          
+    - scope:
+        path: "writeups"                                                                                                             
+      values:                                               
+        layout: "writeup"
