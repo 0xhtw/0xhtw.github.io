@@ -548,6 +548,27 @@ footer {
   margin-left: 1px;
 }
 
+/* ── HTW HANDSTYLE ── */
+.htw-handstyle {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1.75rem;
+  filter:
+    drop-shadow(0 0 10px rgba(119, 0, 204, 0.5))
+    drop-shadow(0 0 30px rgba(187, 0, 255, 0.25));
+  opacity: 0.92;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.htw-handstyle:hover {
+  filter:
+    drop-shadow(0 0 14px rgba(119, 0, 204, 0.7))
+    drop-shadow(0 0 40px rgba(187, 0, 255, 0.4));
+  opacity: 1;
+}
+
 /* ── CONTACT ── */
 .contact-grid {
   display: grid;
