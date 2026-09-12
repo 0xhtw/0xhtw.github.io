@@ -549,12 +549,17 @@ footer {
 }
 
 /* ── HTW HANDSTYLE ── */
+.htw-handstyle-wrap {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+
 .htw-handstyle {
   display: block;
-  width: 100%;
   max-width: 100%;
+  width: auto;
   height: auto;
-  margin-bottom: 1.75rem;
   filter:
     drop-shadow(0 0 10px rgba(119, 0, 204, 0.5))
     drop-shadow(0 0 30px rgba(187, 0, 255, 0.25));
