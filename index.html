@@ -100,6 +100,23 @@
         <p>HTW stands for <strong>Hack The World</strong> — began in Milton Keynes, a city with a reputation for pioneering tech and bold urban design. What started as a small artistic collective evolved into a small group of people passionate about creativity, technology and exploration in both urban and digital senses.</p>
         <p>HTW exists across different spaces, both online and offline. Representing our crossover between urban street art culture and technology. It's more than a crew, it's a mindset of exploration, experimentation, and pushing boundaries.</p>
         <p>That philosophy guides my work in cybersecurity: the drive to learn, to innovate and share knowledge in ways that make systems stronger and uncover new findings in the forever evolving world of cybersecurity.</p>
+
+        <div class="htw-gallery" id="htw-gallery">
+          <div class="htw-gallery-inner">
+            <div class="htw-slide htw-slide-active"><img src="assets/img/gallery/htw001.jpg" alt=""></div>
+            <div class="htw-slide"><img src="assets/img/gallery/htw002.jpg" alt=""></div>
+            <div class="htw-slide"><img src="assets/img/gallery/htw003.jpg" alt=""></div>
+            <div class="htw-slide"><img src="assets/img/gallery/htw004.jpg" alt=""></div>
+            <div class="htw-slide"><img src="assets/img/gallery/htw005.jpg" alt=""></div>
+            <div class="htw-slide"><img src="assets/img/gallery/htw006.jpg" alt=""></div>
+            <div class="htw-slide"><img src="assets/img/gallery/htw007.jpg" alt=""></div>
+            <div class="htw-slide"><img src="assets/img/gallery/htw008.jpg" alt=""></div>
+            <div class="htw-slide"><img src="assets/img/gallery/htw009.jpg" alt=""></div>
+          </div>
+          <button class="htw-gal-prev" aria-label="Previous">&#8249;</button>
+          <button class="htw-gal-next" aria-label="Next">&#8250;</button>
+          <div class="htw-dots" id="htw-dots"></div>
+        </div>
       </div>
     </section>
 
@@ -219,6 +236,39 @@
     }
 
     initPage();
+
+    // ── HTW Gallery ──────────────────────────────────────────────
+    (function () {
+      const gallery = document.getElementById('htw-gallery');
+      if (!gallery) return;
+      const slides  = Array.from(gallery.querySelectorAll('.htw-slide'));
+      const dotsEl  = document.getElementById('htw-dots');
+      let cur = 0, startX = 0;
+
+      slides.forEach((_, i) => {
+        const d = document.createElement('span');
+        d.className = 'htw-dot' + (i === 0 ? ' htw-dot-active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(d);
+      });
+
+      function goTo(idx) {
+        slides[cur].classList.remove('htw-slide-active');
+        dotsEl.children[cur].classList.remove('htw-dot-active');
+        cur = (idx + slides.length) % slides.length;
+        slides[cur].classList.add('htw-slide-active');
+        dotsEl.children[cur].classList.add('htw-dot-active');
+      }
+
+      gallery.querySelector('.htw-gal-prev').addEventListener('click', () => goTo(cur - 1));
+      gallery.querySelector('.htw-gal-next').addEventListener('click', () => goTo(cur + 1));
+
+      gallery.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      gallery.addEventListener('touchend',   e => {
+        const d = startX - e.changedTouches[0].clientX;
+        if (Math.abs(d) > 40) goTo(d > 0 ? cur + 1 : cur - 1);
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>
