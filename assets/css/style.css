@@ -82,7 +82,7 @@ body::after {
   position: absolute;
   right: 0;
   bottom: 0;
-  height: 92vh;
+  height: 100vh;
   width: auto;
   opacity: 0.18;
   filter: sepia(1) saturate(12) hue-rotate(240deg) brightness(1.1);
